@@ -488,6 +488,7 @@
     },
     {
       id: 1, emoji: "🛏️", category: "Furniture",
+      photos: ["IMG_0291.jpeg", "IMG_0290.jpeg"],
       title: "IKEA VALEVÅG Pocket Spring Mattress — Full",
       desc: "Medium-firm with 5 comfort zones and individual pocket springs. Thick foam top for extra cushioning. Like new.",
       retail: 329, price: 99.99, sold: false, available_from: "2026-08-19"
@@ -697,10 +698,11 @@
     grid.innerHTML = filtered.map(item => {
       const disc = item.retail && item.price ? discount(item.retail, item.price) : 0;
       const imgHTML = `<div class="card-img">
-        <img src="images/${item.id}_1.jpeg"
-             alt="${item.title}"
-             onerror="this.style.display='none';this.parentElement.querySelector('.emoji-fallback').style.display='block'"
-        /><span class="emoji-fallback" style="display:none;font-size:3rem">${item.emoji}</span>
+        ${item.photos && item.photos.length > 0
+          ? `<img src="images/${item.photos[0]}" alt="${item.title}" onerror="this.style.display='none';this.parentElement.querySelector('.emoji-fallback').style.display='block'" />`
+          : ''
+        }
+        <span class="emoji-fallback" style="display:${item.photos && item.photos.length > 0 ? 'none' : 'block'};font-size:3rem">${item.emoji}</span>
       </div>`;
       return `
         <div class="card ${item.sold ? 'sold' : ''}" data-id="${item.id}">
@@ -775,56 +777,30 @@
     const slideEmoji = document.getElementById('slideEmoji');
     const slideImg = document.getElementById('slideImg');
     const dotsEl = document.getElementById('slideDots');
-    slidePhotos = [];
+    slidePhotos = (item.photos || []).map(f => `images/${f}`);
     slideIndex = 0;
 
-    // Hide everything first
     slideImg.style.display = 'none';
     slideEmoji.style.display = 'none';
     dotsEl.innerHTML = '';
     document.getElementById('slidePrev').style.display = 'none';
     document.getElementById('slideNext').style.display = 'none';
 
-    // Try loading images 1 through 6 sequentially via Image objects
-    let found = 0;
-    let checked = 0;
-    const MAX = 6;
-
-    function tryNext(n) {
-      if (n > MAX) return finalize();
-      const src = `images/${item.id}_${n}.jpeg`;
-      const tester = new Image();
-      tester.onload = () => {
-        slidePhotos.push(src);
-        found++;
-        tryNext(n + 1);
-      };
-      tester.onerror = () => {
-        // Stop on first miss — assumes sequential naming
-        finalize();
-      };
-      tester.src = src;
+    if (slidePhotos.length === 0) {
+      slideEmoji.textContent = item.emoji;
+      slideEmoji.style.display = 'block';
+      return;
     }
 
-    function finalize() {
-      if (slidePhotos.length === 0) {
-        slideEmoji.textContent = item.emoji;
-        slideEmoji.style.display = 'block';
-        return;
-      }
-      dotsEl.innerHTML = slidePhotos.map((_, i) =>
-        `<span class="slide-dot${i===0?' active':''}" data-i="${i}"></span>`
-      ).join('');
-      dotsEl.querySelectorAll('.slide-dot').forEach(dot => {
-        dot.addEventListener('click', () => { slideIndex = parseInt(dot.dataset.i); loadSlide(slideIndex); });
-      });
-      document.getElementById('slidePrev').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
-      document.getElementById('slideNext').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
-      slideIndex = 0;
-      loadSlide(0);
-    }
-
-    tryNext(1);
+    dotsEl.innerHTML = slidePhotos.map((_, i) =>
+      `<span class="slide-dot${i===0?' active':''}" data-i="${i}"></span>`
+    ).join('');
+    dotsEl.querySelectorAll('.slide-dot').forEach(dot => {
+      dot.addEventListener('click', () => { slideIndex = parseInt(dot.dataset.i); loadSlide(slideIndex); });
+    });
+    document.getElementById('slidePrev').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
+    document.getElementById('slideNext').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
+    loadSlide(0);
   }
 
   document.getElementById('slidePrev').addEventListener('click', () => {
