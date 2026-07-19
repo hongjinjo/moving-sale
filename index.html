@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moving Sale — Everything Must Go</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #FAFAF7;
+      --surface:   #FFFFFF;
+      --border:    #E8E8E2;
+      --text:      #1A1A1A;
+      --muted:     #888880;
+      --amber:     #F59E0B;
+      --amber-lt:  #FEF3C7;
+      --red:       #EF4444;
+      --green:     #16A34A;
+      --sold-bg:   #F1F1EE;
+      --sold-text: #AAAAAA;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--text);
+      color: #fff;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--amber); }
+    .header-note {
+      font-size: 0.78rem;
+      color: #aaa;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 48px 24px 36px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+    .hero p {
+      margin-top: 12px;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .badge {
+      background: var(--amber-lt);
+      color: #92400E;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+      color: var(--text);
+    }
+    .filter-btn:hover { border-color: var(--text); }
+    .filter-btn.active {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+    .item-count {
+      margin-left: auto;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── Grid ── */
+    .grid {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.15s, transform 0.15s;
+      cursor: pointer;
+    }
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+      transform: translateY(-2px);
+    }
+    .card.sold {
+      opacity: 0.55;
+      cursor: default;
+      pointer-events: none;
+    }
+    .card.sold:hover { box-shadow: none; transform: none; }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: var(--sold-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      flex-shrink: 0;
+    }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .card-body {
+      padding: 14px 16px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* price block */
+    .card-price {
+      margin-top: auto;
+      padding-top: 10px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .price-main {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .price-orig {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .price-stack { display: flex; flex-direction: column; gap: 2px; }
+    .discount-pill {
+      background: var(--amber);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .sold-pill {
+      background: var(--sold-bg);
+      color: var(--sold-text);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* offer button */
+    .offer-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 9px;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .offer-btn:hover { background: #333; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface);
+      border-radius: 18px;
+      max-width: 480px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--sold-bg);
+      border: none;
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-family: inherit;
+      color: var(--text);
+    }
+    .modal h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .modal .modal-item-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color 0.15s;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--text);
+    }
+    .offer-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--amber);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover { background: #D97706; }
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 20px 0 8px;
+    }
+    .success-msg .check { font-size: 2.5rem; }
+    .success-msg h3 { font-size: 1.1rem; font-weight: 700; margin-top: 8px; }
+    .success-msg p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 500px) {
+      .hero { padding: 32px 16px 24px; }
+      .controls { padding: 0 16px 16px; }
+      .grid { padding: 0 16px 60px; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Moving<span>Sale</span> 📦</div>
+  <div class="header-note">Hyde Park, Chicago · Aug 2026</div>
+</header>
+
+<section class="hero">
+  <h1>I'm moving.<br/><em>Everything goes.</em></h1>
+  <p>Picked up great stuff over the years — now it needs a new home. Prices are fair, but feel free to make an offer. Best bid wins.</p>
+  <div class="hero-cta">
+    <span class="badge">🚚 Items available for pickup</span>
+    <span class="badge">💬 Offers welcome</span>
+  </div>
+</section>
+
+<div class="controls">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="available">Available</button>
+  <button class="filter-btn" data-filter="sold">Sold</button>
+  <span class="item-count" id="itemCount"></span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<!-- Offer Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div id="modalContent">
+      <h2 id="modalTitle">Make an Offer</h2>
+      <div class="modal-item-price" id="modalPrice"></div>
+      <p class="offer-note">My asking price is listed above. Offer anything — if it's the best I get, it's yours. I'll reach out to confirm.</p>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="fieldName" placeholder="Jane Smith" />
+      </div>
+      <div class="form-group">
+        <label>Contact (Phone / Email / Signal)</label>
+        <input type="text" id="fieldContact" placeholder="your@email.com  or  (312) 555-0000" />
+      </div>
+      <div class="form-group">
+        <label>Your Offer ($)</label>
+        <input type="text" id="fieldOffer" placeholder="e.g. $45.00" />
+      </div>
+      <div class="form-group">
+        <label>Message (optional)</label>
+        <textarea id="fieldMessage" rows="3" placeholder="Any questions or notes..."></textarea>
+      </div>
+      <button class="submit-btn" id="submitBtn">Send Offer ✉️</button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <div class="check">✅</div>
+      <h3>Offer sent!</h3>
+      <p>I'll get back to you as soon as I can.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Made with ♥ to fund my next adventure &nbsp;·&nbsp; All items in Hyde Park, Chicago &nbsp;·&nbsp; Pickup only
+</footer>
+
+<script>
+  // ── Dummy Data ──────────────────────────────────────────────
+  const items = [
+    {
+      id: 1, emoji: "🛏️",
+      title: "IKEA VALEVÅG Pocket Spring Mattress — Full",
+      desc: "Medium-firm with 5 comfort zones and individual pocket springs. Thick foam top for extra cushioning. Like new.",
+      retail: 329, price: 99.99, sold: false
+    },
+    {
+      id: 2, emoji: "📚",
+      title: "IKEA BILLY Bookcase — White (x2)",
+      desc: "Two slim white BILLY bookcases. Great for books, plants, or display. Selling both together. Like new.",
+      retail: 79.98, price: 19.99, sold: false
+    },
+    {
+      id: 3, emoji: "🪑",
+      title: "IKEA GRÖNFJÄLL Office Chair — Gray/Black",
+      desc: "Premium ergonomic chair with cooling fabric, stain-resistant and washable. Fully adjustable.",
+      retail: 449.99, price: 189.99, sold: false
+    },
+    {
+      id: 4, emoji: "🍳",
+      title: "Tramontina 14-inch Nonstick Frying Pan",
+      desc: "Extra-large professional nonstick in heavy-gauge aluminium. Oven safe to 400°F. Like new.",
+      retail: 56.95, price: 19.99, sold: false
+    },
+    {
+      id: 5, emoji: "🖥️",
+      title: "NZXT H5 Flow White Mid-Tower PC Case",
+      desc: "Clean, minimal white mid-tower with perforated front panel for serious airflow. Easy to build in.",
+      retail: 59.99, price: 29.99, sold: false
+    },
+    {
+      id: 6, emoji: "🫙",
+      title: "Braun MultiQuick 7 Immersion Blender",
+      desc: "Powerful 500W handheld blender with food processor attachment. SmartSpeed technology.",
+      retail: 98.96, price: 49.99, sold: false
+    },
+    {
+      id: 7, emoji: "🧺",
+      title: "IKEA FJÄLLARNIKA Duvet — Warm, Full/Queen",
+      desc: "90% duck feather / 10% duck down. Cozy winter duvet with stitched inner walls. Machine washable.",
+      retail: 69.99, price: 19.99, sold: false
+    },
+    {
+      id: 8, emoji: "🧊",
+      title: "Amazon Basics Insulated Cooler Backpack — 30-Can",
+      desc: "Holds up to 30 cans, keeps cold for hours with leak-proof PEVA insulation. Padded straps.",
+      retail: 29.97, price: 12.99, sold: false
+    },
+    {
+      id: 9, emoji: "🪴",
+      title: "IKEA BESTÅ Frames — White, 2-Piece Set",
+      desc: "Two white BESTÅ frames, usable side by side or stacked. Great as sideboard or storage.",
+      retail: 95, price: 29.50, sold: false
+    },
+    {
+      id: 10, emoji: "☕",
+      title: "Electric Kettle",
+      desc: "Quickly boils water for tea, coffee, instant meals. Fast and convenient. Like new.",
+      retail: 17.99, price: null, sold: true
+    },
+    {
+      id: 11, emoji: "⚡",
+      title: "Surge Protector — 6-Outlet, 6ft cord",
+      desc: "790-joule protection with 15-amp circuit breaker and LED indicator. Keeps your devices safe.",
+      retail: 10.22, price: 5.99, sold: false
+    },
+    {
+      id: 12, emoji: "🎽",
+      title: "Spikeball Pro Set — Tournament Kit",
+      desc: "Official tournament set. Way more durable than the standard version with rubber-footed legs.",
+      retail: 99, price: null, sold: true
+    },
+  ];
+
+  // ── Render ──────────────────────────────────────────────────
+  const grid = document.getElementById('grid');
+  const itemCount = document.getElementById('itemCount');
+  let currentFilter = 'all';
+
+  function formatPrice(n) {
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function discount(retail, price) {
+    return Math.round((1 - price / retail) * 100);
+  }
+
+  function renderCards(filter) {
+    let filtered = items;
+    if (filter === 'available') filtered = items.filter(i => !i.sold);
+    if (filter === 'sold') filtered = items.filter(i => i.sold);
+
+    const available = items.filter(i => !i.sold).length;
+    itemCount.textContent = `${available} items available`;
+
+    grid.innerHTML = filtered.map(item => {
+      const disc = item.retail && item.price ? discount(item.retail, item.price) : 0;
+      return `
+      <div class="card ${item.sold ? 'sold' : ''}" data-id="${item.id}">
+        <div class="card-img">${item.emoji}</div>
+        <div class="card-body">
+          <div class="card-title">${item.title}</div>
+          <div class="card-desc">${item.desc}</div>
+          <div class="card-price">
+            <div class="price-stack">
+              ${item.retail ? `<div class="price-orig">${formatPrice(item.retail)}</div>` : ''}
+              <div class="price-main">${item.price ? formatPrice(item.price) : '—'}</div>
+            </div>
+            ${item.sold
+              ? `<span class="sold-pill">Sold</span>`
+              : disc >= 10 ? `<span class="discount-pill">-${disc}%</span>` : ''
+            }
+          </div>
+          ${!item.sold ? `<button class="offer-btn" data-id="${item.id}">Make an offer →</button>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+
+    // attach offer buttons
+    document.querySelectorAll('.offer-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal(parseInt(btn.dataset.id));
+      });
+    });
+  }
+
+  // ── Filter buttons ────────────────────────────────────────
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderCards(currentFilter);
+    });
+  });
+
+  // ── Modal ─────────────────────────────────────────────────
+  const overlay = document.getElementById('modalOverlay');
+  const modalClose = document.getElementById('modalClose');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalPrice = document.getElementById('modalPrice');
+  const successMsg = document.getElementById('successMsg');
+  const modalContent = document.getElementById('modalContent');
+  let activeItem = null;
+
+  function openModal(id) {
+    activeItem = items.find(i => i.id === id);
+    modalTitle.textContent = activeItem.title;
+    modalPrice.textContent = activeItem.price ? formatPrice(activeItem.price) : 'Make an offer';
+    successMsg.style.display = 'none';
+    modalContent.style.display = 'block';
+    ['fieldName','fieldContact','fieldOffer','fieldMessage'].forEach(f => document.getElementById(f).value = '');
+    overlay.classList.add('open');
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    activeItem = null;
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+
+  // ── Submit (Google Form placeholder) ─────────────────────
+  // 나중에 실제 Google Form URL로 교체하면 돼
+  const GOOGLE_FORM_URL = 'YOUR_GOOGLE_FORM_ACTION_URL'; // TODO: 교체
+
+  document.getElementById('submitBtn').addEventListener('click', () => {
+    const name = document.getElementById('fieldName').value.trim();
+    const contact = document.getElementById('fieldContact').value.trim();
+    const offerAmt = document.getElementById('fieldOffer').value.trim();
+
+    if (!name || !contact || !offerAmt) {
+      alert('Please fill in your name, contact info, and offer amount!');
+      return;
+    }
+
+    // Google Form 미연동 상태일 때는 그냥 성공 화면 보여줌
+    // 연동 후에는 fetch로 폼 전송
+    /*
+    const formData = new FormData();
+    formData.append('entry.XXXXXXXXX', activeItem.title);  // TODO: entry ID
+    formData.append('entry.XXXXXXXXX', name);
+    formData.append('entry.XXXXXXXXX', contact);
+    formData.append('entry.XXXXXXXXX', offerAmt);
+    formData.append('entry.XXXXXXXXX', document.getElementById('fieldMessage').value);
+    fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
+    */
+
+    modalContent.style.display = 'none';
+    successMsg.style.display = 'block';
+  });
+
+  // ── Init ──────────────────────────────────────────────────
+  renderCards('all');
+</script>
+</body>
+</html>
