@@ -771,39 +771,60 @@
     document.getElementById('slideNext').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
   }
 
-  async function buildSlides(item) {
+  function buildSlides(item) {
     const slideEmoji = document.getElementById('slideEmoji');
+    const slideImg = document.getElementById('slideImg');
     const dotsEl = document.getElementById('slideDots');
     slidePhotos = [];
+    slideIndex = 0;
 
-    // Try up to 6 photos: id_1.jpeg, id_2.jpeg, ...
-    const checks = Array.from({length: 6}, (_, i) =>
-      fetch(`images/${item.id}_${i+1}.jpeg`, {method: 'HEAD'})
-        .then(r => r.ok ? `images/${item.id}_${i+1}.jpeg` : null)
-        .catch(() => null)
-    );
-    const results = await Promise.all(checks);
-    slidePhotos = results.filter(Boolean);
+    // Hide everything first
+    slideImg.style.display = 'none';
+    slideEmoji.style.display = 'none';
+    dotsEl.innerHTML = '';
+    document.getElementById('slidePrev').style.display = 'none';
+    document.getElementById('slideNext').style.display = 'none';
 
-    if (slidePhotos.length === 0) {
-      slideEmoji.textContent = item.emoji;
-      slideEmoji.style.display = 'block';
-      document.getElementById('slideImg').style.display = 'none';
-      dotsEl.innerHTML = '';
-      document.getElementById('slidePrev').style.display = 'none';
-      document.getElementById('slideNext').style.display = 'none';
-      return;
+    // Try loading images 1 through 6 sequentially via Image objects
+    let found = 0;
+    let checked = 0;
+    const MAX = 6;
+
+    function tryNext(n) {
+      if (n > MAX) return finalize();
+      const src = `images/${item.id}_${n}.jpeg`;
+      const tester = new Image();
+      tester.onload = () => {
+        slidePhotos.push(src);
+        found++;
+        tryNext(n + 1);
+      };
+      tester.onerror = () => {
+        // Stop on first miss — assumes sequential naming
+        finalize();
+      };
+      tester.src = src;
     }
 
-    dotsEl.innerHTML = slidePhotos.map((_, i) =>
-      `<span class="slide-dot${i===0?' active':''}" data-i="${i}"></span>`
-    ).join('');
-    dotsEl.querySelectorAll('.slide-dot').forEach(dot => {
-      dot.addEventListener('click', () => { slideIndex = parseInt(dot.dataset.i); loadSlide(slideIndex); });
-    });
+    function finalize() {
+      if (slidePhotos.length === 0) {
+        slideEmoji.textContent = item.emoji;
+        slideEmoji.style.display = 'block';
+        return;
+      }
+      dotsEl.innerHTML = slidePhotos.map((_, i) =>
+        `<span class="slide-dot${i===0?' active':''}" data-i="${i}"></span>`
+      ).join('');
+      dotsEl.querySelectorAll('.slide-dot').forEach(dot => {
+        dot.addEventListener('click', () => { slideIndex = parseInt(dot.dataset.i); loadSlide(slideIndex); });
+      });
+      document.getElementById('slidePrev').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
+      document.getElementById('slideNext').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
+      slideIndex = 0;
+      loadSlide(0);
+    }
 
-    slideIndex = 0;
-    loadSlide(0);
+    tryNext(1);
   }
 
   document.getElementById('slidePrev').addEventListener('click', () => {
