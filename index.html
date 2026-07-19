@@ -470,6 +470,7 @@
     // ── 🛋️ Furniture ── (price descending)
     {
       id: 3, emoji: "🪑", category: "Furniture",
+      photos: ["IMG_0305.jpeg"],
       title: "Knoll Generation Chair — Fully Loaded, Gray",
       desc: "Iconic Knoll Generation ergonomic chair with all options. Flex back net, adjustable arms, lumbar support, seat depth adjustment, tilt lock. Good condition.",
       retail: 1495, price: 600, sold: false, available_from: null
@@ -515,6 +516,7 @@
     // ── 🖥️ Electronics ── (price descending)
     {
       id: 25, emoji: "🤖", category: "Electronics",
+      photos: ["IMG_0307.jpeg"],
       title: "Roborock Robot Vacuum",
       desc: "Roborock robot vacuum with app-based control and automatic floor mapping. Quietly and efficiently handles hardwood floors and low-pile carpet. Charging dock included.",
       retail: 400, price: 120, sold: false, available_from: "2026-08-17"
@@ -553,12 +555,14 @@
     // ── 🍳 Kitchen ── (price descending)
     {
       id: 15, emoji: "🍽️", category: "Kitchen",
+      photos: ["IMG_0306.jpeg"],
       title: "Novete Portable Countertop Dishwasher — TDQR01",
       desc: "Compact countertop dishwasher with 5L built-in water tank. No installation needed — connects to faucet or fill manually. 5 wash programs including Baby Care mode, air-dry function, 4 place settings.",
       retail: 279.99, price: 150, sold: false, available_from: "2026-08-17"
     },
     {
       id: 14, emoji: "🍚", category: "Kitchen",
+      photos: ["IMG_0309.jpeg"],
       title: "Cuckoo 5QT Multi-Pressure Cooker — CMC-QSB501S",
       desc: "8-in-1 Korean pressure cooker: rice, slow cook, steam, sauté, yogurt, soup and more. 5-quart stainless steel inner pot, auto-clean mode, voice guide, 15-hour delay timer. Made in Korea.",
       retail: 149.99, price: 70, sold: false, available_from: null
@@ -597,6 +601,7 @@
     // ── 🏠 Home & Other ── (price descending)
     {
       id: 21, emoji: "❄️", category: "Home & Other",
+      photos: ["IMG_0308.jpeg"],
       title: "Haier Window AC Unit",
       desc: "Haier window air conditioner with digital controls and multi-speed fan. Cools medium-sized rooms efficiently. Easy installation in standard double-hung windows.",
       retail: 320, price: 120, sold: false, available_from: "2026-08-17"
@@ -656,12 +661,6 @@
       retail: 25, price: 8, sold: false, available_from: null
     },
   ];
-
-  // ── Render ──────────────────────────────────────────────────
-  const grid = document.getElementById('grid');
-  const itemCount = document.getElementById('itemCount');
-  let currentFilter = 'all';
-
   function formatPrice(n) {
     return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
