@@ -681,6 +681,9 @@
       retail: 25, price: 8, sold: false, available_from: null
     },
   ];
+
+  // ── Helpers ──────────────────────────────────────────────
+  function formatPrice(n) {
     return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
@@ -703,6 +706,8 @@
     let filtered = items;
     if (filter === 'sold') filtered = items.filter(i => i.sold);
     else if (filter !== 'all') filtered = items.filter(i => !i.sold && i.category === filter);
+    // Photos-first within each group
+    filtered = [...filtered.filter(i => i.photos && i.photos.length > 0), ...filtered.filter(i => !i.photos || i.photos.length === 0)];
 
     const available = items.filter(i => !i.sold).length;
     itemCount.textContent = `${available} items available`;
