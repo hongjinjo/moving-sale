@@ -466,9 +466,8 @@
   Made with ♥ to fund my next adventure &nbsp;·&nbsp; All items in Hyde Park, Chicago &nbsp;·&nbsp; Pickup only
 </footer>
 
-<script>
   const items = [
-    // ── 🛋️ Furniture ── (price descending)
+    // ── 🛋️ Furniture ── (photos first, price descending)
     {
       id: 3, emoji: "🪑", category: "Furniture",
       photos: ["IMG_0305.jpeg"],
@@ -482,18 +481,6 @@
       title: "IKEA Queen Size Sofa Bed — Blue",
       desc: "Foldable sofa bed in blue fabric. Functions as both a sofa and a single bed. Great for small spaces or guests.",
       retail: 599.99, price: 200, sold: false, available_from: "2026-08-19"
-    },
-    {
-      id: 2, emoji: "🖥️", category: "Furniture",
-      title: "IKEA Desk — Large Wood",
-      desc: "Large IKEA desk with plenty of surface area for dual monitors and accessories. Solid build, good condition.",
-      retail: null, price: 150, sold: false, available_from: null
-    },
-    {
-      id: 7, emoji: "🍽️", category: "Furniture",
-      title: "IKEA LERHAMN Dining Table + 2 Chairs — Pine Wood",
-      desc: "Solid pine dining table with 2 matching chairs with beige upholstered seats. Seats 2–4. Classic Scandinavian design, good condition. Discontinued model.",
-      retail: 149, price: 75, sold: false, available_from: "2026-08-17"
     },
     {
       id: 18, emoji: "🗄️", category: "Furniture",
@@ -516,8 +503,20 @@
       desc: "Classic IKEA LACK side table in discontinued red finish. Compact square design (21 5/8\" × 21 5/8\"). Lightweight and easy to move. Red colorway no longer available in stores.",
       retail: 9.99, price: 8, sold: false, available_from: null
     },
+    {
+      id: 2, emoji: "🖥️", category: "Furniture",
+      title: "IKEA Desk — Large Wood",
+      desc: "Large IKEA desk with plenty of surface area for dual monitors and accessories. Solid build, good condition.",
+      retail: null, price: 150, sold: false, available_from: null
+    },
+    {
+      id: 7, emoji: "🍽️", category: "Furniture",
+      title: "IKEA LERHAMN Dining Table + 2 Chairs — Pine Wood",
+      desc: "Solid pine dining table with 2 matching chairs with beige upholstered seats. Seats 2–4. Classic Scandinavian design, good condition. Discontinued model.",
+      retail: 149, price: 75, sold: false, available_from: "2026-08-17"
+    },
 
-    // ── 🖥️ Electronics ── (price descending)
+    // ── 🖥️ Electronics ── (photos first, price descending)
     {
       id: 25, emoji: "🤖", category: "Electronics",
       photos: ["IMG_0307.jpeg"],
@@ -527,18 +526,21 @@
     },
     {
       id: 24, emoji: "🧹", category: "Electronics",
+      photos: ["KakaoTalk_Photo_2026-07-21-18-04-21 005 Small.jpeg"],
       title: "Dyson V6 Cordless Vacuum — with Wall Dock & Box",
       desc: "Dyson V6 cordless stick vacuum with powerful digital motor spinning up to 110,000 RPM. 2-Tier Radial cyclone technology for strong, fade-free suction. Up to 20 minutes of runtime. Converts to handheld. Includes wall-mount dock and original box.",
       retail: 300, price: 100, sold: false, available_from: null
     },
     {
       id: 5, emoji: "🖥️", category: "Electronics",
+      photos: ["KakaoTalk_Photo_2026-07-21-18-03-33 001 Small.jpeg"],
       title: "LG 29\" UltraWide Monitor — 29UB55, 2560x1080 IPS",
-      desc: "29\" 21:9 UltraWide IPS panel, 2560x1080 resolution, height-adjustable stand, 4-screen split, dual HDMI + DisplayPort + DVI-D. Great for productivity and multitasking.",
+      desc: "29\" 21:9 UltraWide IPS panel, 2560x1080 resolution, height-adjustable stand, 4-screen split, dual HDMI + DisplayPort + DVI-D. Great for productivity and multitasking. Older model but works perfectly.",
       retail: 283.99, price: 100, sold: false, available_from: null
     },
     {
       id: 4, emoji: "🖥️", category: "Electronics",
+      photos: ["KakaoTalk_Photo_2026-07-21-18-03-38 002 Small.jpeg"],
       title: "Dell 24\" Monitor — S2421H, Full HD IPS",
       desc: "23.8\" IPS panel, Full HD 1080p at 75Hz, AMD FreeSync, 99% sRGB, ultra-thin 3-sided bezel, dual HDMI ports and built-in speakers. Like new condition.",
       retail: 134.99, price: 80, sold: false, available_from: null
@@ -558,7 +560,7 @@
       retail: null, price: 30, sold: false, available_from: null
     },
 
-    // ── 🍳 Kitchen ── (price descending)
+    // ── 🍳 Kitchen ── (photos first, price descending)
     {
       id: 15, emoji: "🍽️", category: "Kitchen",
       photos: ["IMG_0306.jpeg"],
@@ -572,12 +574,6 @@
       title: "Cuckoo 5QT Multi-Pressure Cooker — CMC-QSB501S",
       desc: "8-in-1 Korean pressure cooker: rice, slow cook, steam, sauté, yogurt, soup and more. 5-quart stainless steel inner pot, auto-clean mode, voice guide, 15-hour delay timer. Made in Korea.",
       retail: 149.99, price: 70, sold: false, available_from: null
-    },
-    {
-      id: 10, emoji: "🍟", category: "Kitchen",
-      title: "Cosori Pro Gen 2 Air Fryer — CO159-AF, 5.8QT",
-      desc: "5.8-quart air fryer with 13 one-touch cooking functions. Large square basket fits up to 5lb chicken. Dishwasher-safe basket. Good condition.",
-      retail: 99.99, price: 50, sold: false, available_from: null
     },
     {
       id: 9, emoji: "🍟", category: "Kitchen",
@@ -595,6 +591,7 @@
     },
     {
       id: 13, emoji: "🥤", category: "Kitchen",
+      photos: ["KakaoTalk_Photo_2026-07-21-18-03-50 003 Small.jpeg"],
       title: "Nutri Ninja Pro Blender — BL451, 900W",
       desc: "900W personal blender with Pro Extractor Blades. Crushes ice, seeds, skins and stems. Includes 18oz and 24oz BPA-free cups with Sip & Seal lids. Dishwasher safe.",
       retail: 79.99, price: 30, sold: false, available_from: null
@@ -606,20 +603,40 @@
       desc: "Stainless steel electric kettle. Fast boil, good capacity. Works perfectly. Good condition.",
       retail: null, price: 15, sold: false, available_from: null
     },
+    {
+      id: 10, emoji: "🍟", category: "Kitchen",
+      title: "Cosori Pro Gen 2 Air Fryer — CO159-AF, 5.8QT",
+      desc: "5.8-quart air fryer with 13 one-touch cooking functions. Large square basket fits up to 5lb chicken. Dishwasher-safe basket. Good condition.",
+      retail: 99.99, price: 50, sold: false, available_from: null
+    },
 
-    // ── 🏠 Home & Other ── (price descending)
+    // ── 🏠 Home & Other ── (photos first, price descending)
     {
       id: 21, emoji: "❄️", category: "Home & Other",
       photos: ["IMG_0308.jpeg"],
       title: "Haier Window AC — HWE12XCR-LD, 12,000 BTU",
-      desc: "Haier HWE12XCR-LD 12,000 BTU window air conditioner. Cools rooms up to 550 sq ft. 3 cooling and fan speeds with Auto Cool, cool/fan/dehumidify/energy save modes, 24-hour timer, sleep mode, and remote control included.",
+      desc: "Haier HWE12XCR-LD 12,000 BTU window air conditioner. Cools rooms up to 550 sq ft. 3 cooling and fan speeds, Auto Cool, dehumidify, energy save modes, 24-hour timer, sleep mode, and remote control included.",
       retail: 319.99, price: 160, sold: false, available_from: "2026-08-17"
+    },
+    {
+      id: 39, emoji: "☕", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-07-21-18-04-04 004 Small.jpeg"],
+      title: "Nespresso VertuoPlus Coffee & Espresso Maker — Matte Black",
+      desc: "Single-serve coffee and espresso maker with patented Centrifusion™ technology. Reads barcode on each capsule and automatically adjusts brewing parameters. Brews 4 cup sizes. 15–20 second heat-up time, auto-eject capsule system, auto shutoff after 9 minutes.",
+      retail: 217.88, price: 90, sold: false, available_from: null
+    },
+    {
+      id: 38, emoji: "🚲", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-07-21-18-04-26 006 Small.jpeg"],
+      title: "Schwinn Single-Speed City Bike — Black",
+      desc: "Classic black Schwinn single-speed city bike with upright handlebars and 700c wheels. No-fuss, low-maintenance ride — no gears, no derailleur, just pedal and go. Great for flat urban commuting. Good used condition.",
+      retail: 250, price: 80, sold: false, available_from: null
     },
     {
       id: 20, emoji: "🦷", category: "Home & Other",
       photos: ["KakaoTalk_Photo_2026-07-19-20-32-21 001.jpeg"],
       title: "Waterpik Aquarius Water Flosser — WP-660C",
-      desc: "Waterpik Aquarius Water Flosser WP-660C, white. ADA-accepted with 10 pressure settings, Floss and Massage modes, 7 color-coded tips, and a large 22oz reservoir for 90+ seconds of continuous use. #1 dentist-recommended water flosser brand.",
+      desc: "ADA-accepted with 10 pressure settings, Floss and Massage modes, 7 color-coded tips, and a large 22oz reservoir for 90+ seconds of continuous use. #1 dentist-recommended water flosser brand.",
       retail: 79.99, price: 40, sold: false, available_from: null
     },
     {
@@ -637,17 +654,31 @@
       retail: 55.99, price: 30, sold: false, available_from: null
     },
     {
-      id: 8, emoji: "🗄️", category: "Home & Other",
-      title: "Wire Shelving Unit — 4-Tier Metal",
-      desc: "Heavy-duty 4-tier metal wire shelving rack. Great for kitchen, pantry, or storage. Easy to assemble/disassemble.",
-      retail: 70, price: 25, sold: false, available_from: null
-    },
-    {
       id: 27, emoji: "💡", category: "Home & Other",
       photos: ["KakaoTalk_Photo_2026-07-19-20-33-51 011 Small.jpeg"],
       title: "IKEA FILLSTA Table Lamp — White (Discontinued)",
       desc: "Discontinued IKEA FILLSTA table lamp with iconic white petal-shaped shade and three slender metal legs. A design-forward piece that adds a sculptural accent to any room. Hard to find new.",
       retail: 35, price: 25, sold: false, available_from: null
+    },
+    {
+      id: 28, emoji: "🍽️", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-07-19-20-33-45 010 Small.jpeg"],
+      title: "White Ceramic Dinner Plates — Set of ~8",
+      desc: "Clean, simple white ceramic dinner plates in good used condition. No chips or cracks. Great everyday set for a household or first apartment.",
+      retail: 40, price: 15, sold: false, available_from: null
+    },
+    {
+      id: 19, emoji: "💇", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"],
+      title: "Conair 1875W Hair Dryer — White",
+      desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage. Reliable everyday use.",
+      retail: 25, price: 8, sold: false, available_from: null
+    },
+    {
+      id: 8, emoji: "🗄️", category: "Home & Other",
+      title: "Wire Shelving Unit — 4-Tier Metal",
+      desc: "Heavy-duty 4-tier metal wire shelving rack. Great for kitchen, pantry, or storage. Easy to assemble/disassemble.",
+      retail: 70, price: 25, sold: false, available_from: null
     },
     {
       id: 22, emoji: "🗄️", category: "Home & Other",
@@ -662,28 +693,12 @@
       retail: 40, price: 15, sold: false, available_from: null
     },
     {
-      id: 28, emoji: "🍽️", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-45 010 Small.jpeg"],
-      title: "White Ceramic Dinner Plates — Set of ~8",
-      desc: "Clean, simple white ceramic dinner plates in good used condition. No chips or cracks. Great everyday set for a household or first apartment.",
-      retail: 40, price: 15, sold: false, available_from: null
-    },
-    {
       id: 23, emoji: "👟", category: "Home & Other",
       title: "4-Tier Black Metal Shoe Rack",
       desc: "Simple and sturdy 4-tier metal shoe rack. Easy to assemble and disassemble. Holds up to 8–12 pairs of shoes depending on size.",
       retail: 35, price: 12, sold: false, available_from: null
     },
-    {
-      id: 19, emoji: "💇", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"],
-      title: "Conair 1875W Hair Dryer — White",
-      desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage. Reliable everyday use.",
-      retail: 25, price: 8, sold: false, available_from: null
-    },
   ];
-
-  // ── Helpers ──────────────────────────────────────────────
   function formatPrice(n) {
     return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
