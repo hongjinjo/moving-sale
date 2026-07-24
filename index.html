@@ -872,17 +872,16 @@
       return;
     }
 
-    const formData = new FormData();
-    formData.append('entry.1170049700', activeItem.title);
-    formData.append('entry.1778267626', name);
-    formData.append('entry.1776579235', contact);
-    formData.append('entry.1421399265', offerAmt);
-    formData.append('entry.1753321076', message);
-
-    fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
-
-    modalContent.style.display = 'none';
-    successMsg.style.display = 'block';
+    const base = 'https://docs.google.com/forms/d/e/1FAIpQLSebEecwQOe7W1UsGuM73JaPfg35uDqIGlDjamkrfnDt4HNfgg/viewform';
+    const params = new URLSearchParams({
+      'entry.1170049700': activeItem.title,
+      'entry.1778267626': name,
+      'entry.1776579235': contact,
+      'entry.1421399265': offerAmt,
+      'entry.1753321076': message,
+    });
+    window.open(`${base}?${params.toString()}`, '_blank');
+    closeModal();
   });
 
   // ── Init ──────────────────────────────────────────────────
