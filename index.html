@@ -466,7 +466,6 @@
 <footer>
   Made with ♥ to fund my next adventure &nbsp;·&nbsp; All items in Hyde Park, Chicago &nbsp;·&nbsp; Pickup only
 </footer>
-
 <script>
   const items = [
     // ── 🛋️ Furniture ── (photos first, price descending)
@@ -485,11 +484,25 @@
       retail: 599.99, price: 150, sold: false, available_from: "2026-08-19"
     },
     {
-      id: 18, emoji: "🗄️", category: "Furniture",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-32-31 002 Small.jpeg"],
-      title: "IKEA 3-Drawer Unit on Wheels — Birch",
-      desc: "Rolling 3-drawer storage unit in birch finish. Great as a desk companion or bedroom storage. Casters make it easy to move around.",
-      retail: 130, price: 50, sold: true, available_from: null
+      id: 45, emoji: "🛏️", category: "Furniture",
+      photos: ["KakaoTalk_Photo_2026-08-16-11-51-28.jpeg"],
+      title: "Sealy Queen Mattress — PP Deveraux CF",
+      desc: "Sealy queen-size innerspring mattress (60x79\"). Polyurethane foam, fiber batting, and innerspring unit construction. Manufactured Sept 2016. Good used condition.",
+      retail: 1000, price: 100, sold: false, available_from: "2026-08-19"
+    },
+    {
+      id: 41, emoji: "📚", category: "Furniture",
+      photos: ["KakaoTalk_Photo_2026-08-16-11-06-14 003.jpeg"],
+      title: "IKEA BILLY Bookcase — Birch, 4-Shelf",
+      desc: "Classic IKEA BILLY bookcase in birch veneer with 4 adjustable shelves. Great for books, plants, or display. Good used condition.",
+      retail: 79.99, price: 35, sold: false, available_from: null
+    },
+    {
+      id: 44, emoji: "🪑", category: "Furniture",
+      photos: ["KakaoTalk_Photo_2026-08-16-11-05-32 001.jpeg"],
+      title: "Black 2-Tier Side Table",
+      desc: "Black metal 2-tier side table. Compact and versatile — great next to a sofa or bed. Used condition.",
+      retail: 35, price: 10, sold: false, available_from: null
     },
     {
       id: 16, emoji: "🪑", category: "Furniture",
@@ -502,7 +515,7 @@
       id: 26, emoji: "🪑", category: "Furniture",
       photos: ["KakaoTalk_Photo_2026-07-19-20-34-12 014 Small.jpeg"],
       title: "IKEA LACK Side Table — Red (Discontinued)",
-      desc: "Classic IKEA LACK side table in discontinued red finish. Compact square design (21 5/8\" × 21 5/8\"). Lightweight and easy to move. Red colorway no longer available in stores.",
+      desc: "Classic IKEA LACK side table in discontinued red finish. Compact square design (21 5/8\" x 21 5/8\"). Lightweight and easy to move. Red colorway no longer available in stores.",
       retail: 9.99, price: 8, sold: false, available_from: null
     },
     {
@@ -511,26 +524,20 @@
       desc: "Large IKEA desk with plenty of surface area for dual monitors and accessories. Solid build, good condition.",
       retail: null, price: 100, sold: false, available_from: null
     },
-    {
-      id: 7, emoji: "🍽️", category: "Furniture",
-      title: "IKEA LERHAMN Dining Table + 2 Chairs — Pine Wood",
-      desc: "Solid pine dining table with 2 matching chairs with beige upholstered seats. Seats 2–4. Classic Scandinavian design, good condition. Discontinued model.",
-      retail: 149, price: 75, sold: true, available_from: "2026-08-17"
-    },
 
     // ── 🖥️ Electronics ── (photos first, price descending)
     {
       id: 25, emoji: "🤖", category: "Electronics",
       photos: ["IMG_0307.jpeg"],
       title: "Roborock S5 Robot Vacuum",
-      desc: "Roborock S5 robot vacuum with LiDAR laser navigation and automatic floor mapping. 2,000Pa suction, up to 150 minutes runtime. Handles hardwood floors and low-pile carpet. App control via Roborock app. Charging dock included.",
+      desc: "Roborock S5 robot vacuum with LiDAR laser navigation and automatic floor mapping. 2,000Pa suction, up to 150 minutes runtime. App control via Roborock app. Charging dock included.",
       retail: 439.99, price: 80, sold: false, available_from: "2026-08-17"
     },
     {
       id: 5, emoji: "🖥️", category: "Electronics",
       photos: ["KakaoTalk_Photo_2026-07-21-18-03-33 001 Small.jpeg"],
       title: "LG 29\" UltraWide Monitor — 29UB55, 2560x1080 IPS",
-      desc: "29\" 21:9 UltraWide IPS panel, 2560x1080 resolution, height-adjustable stand, 4-screen split, dual HDMI + DisplayPort + DVI-D. Great for productivity and multitasking. Older model but works perfectly.",
+      desc: "29\" 21:9 UltraWide IPS panel, 2560x1080 resolution, height-adjustable stand, 4-screen split, dual HDMI + DisplayPort + DVI-D. Great for productivity and multitasking.",
       retail: 283.99, price: 100, sold: true, available_from: null
     },
     {
@@ -544,15 +551,15 @@
       id: 30, emoji: "🖨️", category: "Electronics",
       photos: ["KakaoTalk_Photo_2026-07-19-20-32-59 005 Small.jpeg"],
       title: "Brother DCP-L2540DW Wireless Laser Printer",
-      desc: "Monochrome laser all-in-one with print, scan, and copy. Wireless + Ethernet connectivity, automatic duplex printing, 30 ppm print speed, 250-sheet paper tray, and 35-page ADF. Compact and reliable — great for home office or grad school use.",
+      desc: "Monochrome laser all-in-one with print, scan, and copy. Wireless + Ethernet connectivity, automatic duplex printing, 30 ppm print speed, 250-sheet paper tray, and 35-page ADF.",
       retail: 120, price: 50, sold: false, available_from: null
     },
     {
       id: 6, emoji: "🖥️", category: "Electronics",
       photos: ["KakaoTalk_Photo_2026-07-19-20-33-36 009 Small.jpeg"],
       title: "ViewSonic 24\" Monitor — VX2450wm-LED, Full HD",
-      desc: "23.6\" Full HD 1080p LED monitor. VGA + DVI inputs, built-in stereo speakers, VESA mount compatible. Older model but works perfectly — great as a secondary or budget monitor.",
-      retail: null, price: 20, sold: false, available_from: null
+      desc: "23.6\" Full HD 1080p LED monitor. VGA + DVI inputs, built-in stereo speakers, VESA mount compatible. Older model but works perfectly.",
+      retail: null, price: 20, sold: true, available_from: null
     },
 
     // ── 🍳 Kitchen ── (photos first, price descending)
@@ -560,36 +567,36 @@
       id: 15, emoji: "🍽️", category: "Kitchen",
       photos: ["IMG_0306.jpeg"],
       title: "Novete Portable Countertop Dishwasher — TDQR01",
-      desc: "Compact countertop dishwasher with 5L built-in water tank. No installation needed — connects to faucet or fill manually. 5 wash programs including Baby Care mode, air-dry function, 4 place settings.",
+      desc: "Compact countertop dishwasher with 5L built-in water tank. No installation needed. 5 wash programs including Baby Care mode, air-dry function, 4 place settings.",
       retail: 279.99, price: 110, sold: false, available_from: "2026-08-17"
     },
     {
       id: 14, emoji: "🍚", category: "Kitchen",
       photos: ["IMG_0309.jpeg"],
       title: "Cuckoo 5QT Multi-Pressure Cooker — CMC-QSB501S",
-      desc: "8-in-1 Korean pressure cooker: rice, slow cook, steam, sauté, yogurt, soup and more. 5-quart stainless steel inner pot, auto-clean mode, voice guide, 15-hour delay timer. Made in Korea.",
+      desc: "8-in-1 Korean pressure cooker: rice, slow cook, steam, saute, yogurt, soup and more. 5-quart stainless steel inner pot, auto-clean mode, voice guide. Made in Korea.",
       retail: 149.99, price: 55, sold: false, available_from: null
     },
     {
       id: 9, emoji: "🍟", category: "Kitchen",
       photos: ["KakaoTalk_Photo_2026-07-19-20-32-49 004 Small.jpeg"],
       title: "Chefman Air Fryer + Grill — RJ38-AFG, 7L",
-      desc: "7-liter indoor air fryer + grill combo. Air fry, grill, roast, bake, or broil all in one virtually smokeless unit. Includes integrated probe thermometer and heavy-duty grill plate. Dishwasher-safe parts.",
+      desc: "7-liter indoor air fryer + grill combo. Air fry, grill, roast, bake, or broil. Includes integrated probe thermometer and heavy-duty grill plate. Dishwasher-safe parts.",
       retail: 99, price: 35, sold: false, available_from: null
     },
     {
       id: 11, emoji: "📡", category: "Kitchen",
       photos: ["KakaoTalk_Photo_2026-07-19-20-33-25 008 Small.jpeg"],
       title: "Insignia 0.7 Cu. Ft. Compact Microwave — NS-MW07BK0",
-      desc: "0.7 cu. ft. countertop microwave, 700W, 6 cooking programs, auto defrost, rotating turntable. Compact size perfect for apartments. Good condition.",
+      desc: "0.7 cu. ft. countertop microwave, 700W, 6 cooking programs, auto defrost, rotating turntable. Compact size perfect for apartments.",
       retail: 79.99, price: 25, sold: false, available_from: "2026-08-17"
     },
     {
-      id: 13, emoji: "🥤", category: "Kitchen",
-      photos: ["KakaoTalk_Photo_2026-07-21-18-03-50 003 Small.jpeg"],
-      title: "Nutri Ninja Pro Blender — BL451, 900W",
-      desc: "900W personal blender with Pro Extractor Blades. Crushes ice, seeds, skins and stems. Includes 18oz and 24oz BPA-free cups with Sip & Seal lids. Dishwasher safe.",
-      retail: 79.99, price: 20, sold: false, available_from: null
+      id: 42, emoji: "☕", category: "Kitchen",
+      photos: ["KakaoTalk_Photo_2026-08-16-11-06-29 004.jpeg"],
+      title: "Gooseneck Electric Pour-Over Kettle with Temperature Control",
+      desc: "Stainless steel gooseneck electric kettle with temperature control base. Perfect for pour-over coffee or tea. Good used condition.",
+      retail: 50, price: 20, sold: false, available_from: null
     },
     {
       id: 12, emoji: "🫖", category: "Kitchen",
@@ -601,8 +608,8 @@
     {
       id: 10, emoji: "🍟", category: "Kitchen",
       title: "Cosori Pro Gen 2 Air Fryer — CO159-AF, 5.8QT",
-      desc: "5.8-quart air fryer with 13 one-touch cooking functions. Large square basket fits up to 5lb chicken. Dishwasher-safe basket. Good condition.",
-      retail: 99.99, price: 40, sold: false, available_from: null
+      desc: "5.8-quart air fryer with 13 one-touch cooking functions. Large square basket fits up to 5lb chicken. Dishwasher-safe basket.",
+      retail: 99.99, price: 30, sold: false, available_from: null
     },
 
     // ── 🏠 Home & Other ── (photos first, price descending)
@@ -610,109 +617,15 @@
       id: 21, emoji: "❄️", category: "Home & Other",
       photos: ["IMG_0308.jpeg"],
       title: "Haier Window AC — HWE12XCR-LD, 12,000 BTU",
-      desc: "Haier HWE12XCR-LD 12,000 BTU window air conditioner. Cools rooms up to 550 sq ft. 3 cooling and fan speeds, Auto Cool, dehumidify, energy save modes, 24-hour timer, sleep mode, and remote control included.",
-      retail: 319.99, price: 120, sold: false, available_from: "2026-08-17"
+      desc: "Haier 12,000 BTU window air conditioner. Cools rooms up to 550 sq ft. 3 cooling/fan speeds, Auto Cool, dehumidify, energy save, 24-hour timer, sleep mode, remote included.",
+      retail: 319.99, price: 90, sold: false, available_from: "2026-08-17"
     },
     {
       id: 39, emoji: "☕", category: "Home & Other",
       photos: ["KakaoTalk_Photo_2026-07-21-18-04-04 004 Small.jpeg"],
       title: "Nespresso VertuoPlus Coffee & Espresso Maker — Matte Black",
-      desc: "Single-serve coffee and espresso maker with patented Centrifusion™ technology. Reads barcode on each capsule and automatically adjusts brewing parameters. Brews 4 cup sizes. 15–20 second heat-up time, auto-eject capsule system, auto shutoff after 9 minutes.",
+      desc: "Single-serve coffee and espresso maker with Centrifusion technology. Brews 4 cup sizes. 15-20 second heat-up, auto-eject capsule system, auto shutoff after 9 minutes.",
       retail: 217.88, price: 70, sold: false, available_from: null
-    },
-    {
-      id: 38, emoji: "🚲", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-21-18-04-26 006 Small.jpeg"],
-      title: "Schwinn Single-Speed City Bike — Black",
-      desc: "Classic black Schwinn single-speed city bike with upright handlebars and 700c wheels. No-fuss, low-maintenance ride — no gears, no derailleur, just pedal and go. Great for flat urban commuting. Good used condition.",
-      retail: 250, price: 80, sold: true, available_from: null
-    },
-    {
-      id: 20, emoji: "🦷", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-32-21 001.jpeg"],
-      title: "Waterpik Aquarius Water Flosser — WP-660C",
-      desc: "ADA-accepted with 10 pressure settings, Floss and Massage modes, 7 color-coded tips, and a large 22oz reservoir for 90+ seconds of continuous use. #1 dentist-recommended water flosser brand.",
-      retail: 79.99, price: 30, sold: false, available_from: null
-    },
-    {
-      id: 29, emoji: "🎲", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-19 007 Small.jpeg"],
-      title: "Catan Board Game + 5–6 Player Extension",
-      desc: "Complete Catan bundle: base game for 3–4 players plus the official 5–6 player extension. Everything you need for a full game night with a bigger group. Both boxes included.",
-      retail: 70, price: 35, sold: true, available_from: null
-    },
-    {
-      id: 37, emoji: "🎲", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-14 006 Small.jpeg"],
-      title: "7 Wonders Board Game (New Edition)",
-      desc: "Award-winning civilization card-drafting game for 3–7 players. Lead one of the seven great cities of the ancient world — gather resources, develop trade routes, build your military, and construct an architectural wonder for the ages. ~30 min playtime. Ages 10+.",
-      retail: 55.99, price: 30, sold: true, available_from: null
-    },
-    {
-      id: 27, emoji: "💡", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-51 011 Small.jpeg"],
-      title: "IKEA FILLSTA Table Lamp — White (Discontinued)",
-      desc: "Discontinued IKEA FILLSTA table lamp with iconic white petal-shaped shade and three slender metal legs. A design-forward piece that adds a sculptural accent to any room. Hard to find new.",
-      retail: 35, price: 25, sold: false, available_from: null
-    },
-    {
-      id: 28, emoji: "🍽️", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-45 010 Small.jpeg"],
-      title: "White Ceramic Dinner Plates — Set of ~8",
-      desc: "Clean, simple white ceramic dinner plates in good used condition. No chips or cracks. Great everyday set for a household or first apartment.",
-      retail: 40, price: 15, sold: true, available_from: null
-    },
-    {
-      id: 19, emoji: "💇", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"],
-      title: "Conair 1875W Hair Dryer — White",
-      desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage. Reliable everyday use.",
-      retail: 25, price: 8, sold: false, available_from: null
-    },
-    {
-      id: 8, emoji: "🗄️", category: "Home & Other",
-      title: "Wire Shelving Unit — 4-Tier Metal",
-      desc: "Heavy-duty 4-tier metal wire shelving rack. Great for kitchen, pantry, or storage. Easy to assemble/disassemble.",
-      retail: 70, price: 25, sold: true, available_from: null
-    },
-    {
-      id: 22, emoji: "🗄️", category: "Home & Other",
-      title: "Metal 3-Tier Galvanized Shelving Unit",
-      desc: "Industrial-style 3-tier galvanized steel shelf. Sturdy and versatile — great for kitchen, entryway, or office storage.",
-      retail: 60, price: 20, sold: false, available_from: null
-    },
-    {
-      id: 17, emoji: "⚖️", category: "Home & Other",
-      title: "Smart Body Scale — White Glass",
-      desc: "Sleek white glass smart scale with app connectivity. Measures weight and BMI. Minimal, modern design.",
-      retail: 40, price: 15, sold: false, available_from: null
-    },
-    {
-      id: 23, emoji: "👟", category: "Home & Other",
-      title: "4-Tier Black Metal Shoe Rack",
-      desc: "Simple and sturdy 4-tier metal shoe rack. Easy to assemble and disassemble. Holds up to 8–12 pairs of shoes depending on size.",
-      retail: 35, price: 12, sold: false, available_from: null
-    },
-    {
-      id: 40, emoji: "🗄️", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-05-48 002.jpeg"],
-      title: "White 3-Tier Storage Shelf",
-      desc: "Simple white 3-tier storage shelf. Lightweight and easy to assemble/disassemble. Great for office, kitchen, or bedroom storage.",
-      retail: 30, price: 15, sold: false, available_from: null
-    },
-    {
-      id: 41, emoji: "📚", category: "Furniture",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-06-14 003.jpeg"],
-      title: "IKEA BILLY Bookcase — Birch, 4-Shelf",
-      desc: "Classic IKEA BILLY bookcase in birch veneer with 4 adjustable shelves. Great for books, plants, or display. Good used condition.",
-      retail: 79.99, price: 35, sold: false, available_from: null
-    },
-    {
-      id: 42, emoji: "☕", category: "Kitchen",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-06-29 004.jpeg"],
-      title: "Gooseneck Electric Pour-Over Kettle with Temperature Control",
-      desc: "Stainless steel gooseneck electric kettle with temperature control base. Perfect for pour-over coffee or tea. Good used condition.",
-      retail: 50, price: 20, sold: false, available_from: null
     },
     {
       id: 43, emoji: "💧", category: "Home & Other",
@@ -722,13 +635,68 @@
       retail: 49, price: 20, sold: false, available_from: null
     },
     {
-      id: 44, emoji: "🪑", category: "Furniture",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-05-32 001.jpeg"],
-      title: "Black 2-Tier Side Table",
-      desc: "Black metal 2-tier side table. Compact and versatile — great next to a sofa or bed. Used condition.",
-      retail: 35, price: 10, sold: false, available_from: null
+      id: 40, emoji: "🗄️", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-08-16-11-05-48 002.jpeg"],
+      title: "White 3-Tier Storage Shelf",
+      desc: "Simple white 3-tier storage shelf. Lightweight and easy to assemble/disassemble. Great for office, kitchen, or bedroom storage.",
+      retail: 30, price: 15, sold: false, available_from: null
+    },
+    {
+      id: 20, emoji: "🦷", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-07-19-20-32-21 001.jpeg"],
+      title: "Waterpik Aquarius Water Flosser — WP-660C",
+      desc: "ADA-accepted with 10 pressure settings, Floss and Massage modes, 7 color-coded tips, 22oz reservoir. #1 dentist-recommended water flosser brand.",
+      retail: 79.99, price: 30, sold: false, available_from: null
+    },
+    {
+      id: 27, emoji: "💡", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-07-19-20-33-51 011 Small.jpeg"],
+      title: "IKEA FILLSTA Table Lamp — White (Discontinued)",
+      desc: "Discontinued IKEA FILLSTA table lamp with iconic white petal-shaped shade and three slender metal legs. Hard to find new.",
+      retail: 35, price: 25, sold: false, available_from: null
+    },
+    {
+      id: 19, emoji: "💇", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"],
+      title: "Conair 1875W Hair Dryer — White",
+      desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage.",
+      retail: 25, price: 8, sold: false, available_from: null
+    },
+    {
+      id: 17, emoji: "⚖️", category: "Home & Other",
+      title: "Smart Body Scale — White Glass (Ovutek)",
+      desc: "Sleek white glass smart scale with app connectivity. Measures weight and BMI. Minimal, modern design.",
+      retail: 40, price: 15, sold: true, available_from: null
+    },
+    {
+      id: 22, emoji: "🗄️", category: "Home & Other",
+      title: "Metal 3-Tier Galvanized Shelving Unit",
+      desc: "Industrial-style 3-tier galvanized steel shelf. Sturdy and versatile — great for kitchen, entryway, or office storage.",
+      retail: 60, price: 20, sold: false, available_from: null
+    },
+    {
+      id: 23, emoji: "👟", category: "Home & Other",
+      title: "4-Tier Black Metal Shoe Rack",
+      desc: "Simple and sturdy 4-tier metal shoe rack. Easy to assemble and disassemble. Holds up to 8-12 pairs of shoes.",
+      retail: 35, price: 12, sold: true, available_from: null
+    },
+    {
+      id: 46, emoji: "🪑", category: "Home & Other",
+      photos: ["IMG_0483.jpeg"],
+      title: "Coleman Oversized Quad Camping Chair — Black",
+      desc: "Classic Coleman folding quad chair with padded seat and back, built-in cup holders on each armrest, and zippered side pocket. Folds flat for easy storage. Good used condition.",
+      retail: 45, price: 15, sold: false, available_from: null
+    },
+    {
+      id: 47, emoji: "🎮", category: "Electronics",
+      photos: ["IMG_0482.jpeg"],
+      title: "Nintendo Switch Console — Neon Blue/Red with Dock",
+      desc: "Nintendo Switch console with neon blue/red Joy-Cons and dock included. Plays in both handheld and TV mode. No game cartridges included. Good used condition.",
+      retail: 299.99, price: 120, sold: false, available_from: null
     },
   ];
+
+  // ── Helpers ──────────────────────────────────────────────
   function formatPrice(n) {
     return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
@@ -748,12 +716,19 @@
     return `<span class="avail-badge avail-later">🕐 Available after ${mo}</span>`;
   }
 
+  // ── Render ──────────────────────────────────────────────
+  const grid = document.getElementById('grid');
+  const itemCount = document.getElementById('itemCount');
+  let currentFilter = 'all';
+
   function renderCards(filter) {
     let filtered = items;
     if (filter === 'sold') filtered = items.filter(i => i.sold);
     else if (filter !== 'all') filtered = items.filter(i => !i.sold && i.category === filter);
-    // Photos-first within each group
-    filtered = [...filtered.filter(i => i.photos && i.photos.length > 0), ...filtered.filter(i => !i.photos || i.photos.length === 0)];
+    filtered = [
+      ...filtered.filter(i => i.photos && i.photos.length > 0),
+      ...filtered.filter(i => !i.photos || i.photos.length === 0)
+    ];
 
     const available = items.filter(i => !i.sold).length;
     itemCount.textContent = `${available} items available`;
@@ -842,7 +817,6 @@
     const dotsEl = document.getElementById('slideDots');
     slidePhotos = (item.photos || []).map(f => `images/${f}`);
     slideIndex = 0;
-
     slideImg.style.display = 'none';
     slideEmoji.style.display = 'none';
     dotsEl.innerHTML = '';
@@ -895,8 +869,6 @@
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
 
   // ── Submit — Google Form ──────────────────────────────────
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSebEecwQOe7W1UsGuM73JaPfg35uDqIGlDjamkrfnDt4HNfgg/formResponse';
-
   document.getElementById('submitBtn').addEventListener('click', () => {
     const name = document.getElementById('fieldName').value.trim();
     const contact = document.getElementById('fieldContact').value.trim();
