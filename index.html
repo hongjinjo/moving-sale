@@ -477,12 +477,6 @@
       retail: 1495, price: 200, sold: false, available_from: null
     },
     {
-      id: 2, emoji: "🖥️", category: "Furniture",
-      title: "IKEA Desk — Large Wood",
-      desc: "Large IKEA desk with plenty of surface area for dual monitors and accessories. Solid build, good condition.",
-      retail: null, price: 75, sold: false, available_from: null
-    },
-    {
       id: 45, emoji: "🛏️", category: "Furniture",
       photos: ["KakaoTalk_Photo_2026-08-16-11-51-28.jpeg"],
       title: "Sealy Queen Mattress — PP Deveraux CF",
@@ -517,6 +511,12 @@
       desc: "Classic IKEA LACK side table in discontinued red finish. Compact square design (21 5/8\" x 21 5/8\"). Lightweight and easy to move. Red colorway no longer available in stores.",
       retail: 9.99, price: 5, sold: false, available_from: null
     },
+    {
+      id: 2, emoji: "🖥️", category: "Furniture",
+      title: "IKEA Desk — Large Wood",
+      desc: "Large IKEA desk with plenty of surface area for dual monitors and accessories. Solid build, good condition.",
+      retail: null, price: 75, sold: false, available_from: null
+    },
 
     // ── 🖥️ Electronics ── (photos first, price descending)
     {
@@ -527,10 +527,17 @@
       retail: 299.99, price: 60, sold: false, available_from: null
     },
     {
+      id: 48, emoji: "🧊", category: "Electronics",
+      photos: ["KakaoTalk_Photo_2026-08-17-10-13-08.jpeg"],
+      title: "RCA 3.2 Cu. Ft. Mini Refrigerator — Platinum Stainless",
+      desc: "RCA compact mini fridge with small freezer compartment, adjustable thermostat, and reversible door. Great for dorm, office, or bedroom. Platinum stainless finish. Good used condition.",
+      retail: 185, price: 40, sold: false, available_from: null
+    },
+    {
       id: 24, emoji: "🧹", category: "Electronics",
       photos: ["KakaoTalk_Photo_2026-07-21-18-04-21 005 Small.jpeg"],
       title: "Dyson V6 Cordless Vacuum — with Wall Dock & Box",
-      desc: "Dyson V6 cordless stick vacuum. Includes wall-mount dock and original box. Good used condition.",
+      desc: "Dyson V6 cordless stick vacuum with powerful digital motor spinning up to 110,000 RPM. 2-Tier Radial cyclone technology for strong suction. Up to 20 minutes of runtime. Converts to handheld. Includes wall-mount dock and original box.",
       retail: 300, price: 100, sold: false, available_from: null
     },
     {
@@ -541,18 +548,18 @@
       retail: 283.99, price: 100, sold: false, available_from: null
     },
     {
-      id: 30, emoji: "🖨️", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-32-59 005 Small.jpeg"],
-      title: "Brother DCP-L2540DW Wireless Laser Printer",
-      desc: "Monochrome laser all-in-one with print, scan, and copy. Wireless + Ethernet connectivity, automatic duplex printing, 30 ppm print speed, 250-sheet paper tray, and 35-page ADF.",
-      retail: 120, price: 35, sold: false, available_from: null
-    },
-    {
       id: 25, emoji: "🤖", category: "Electronics",
       photos: ["IMG_0307.jpeg"],
       title: "Roborock S5 Robot Vacuum",
       desc: "Roborock S5 robot vacuum with LiDAR laser navigation and automatic floor mapping. 2,000Pa suction, up to 150 minutes runtime. App control via Roborock app. Charging dock included.",
       retail: 439.99, price: 50, sold: false, available_from: "2026-08-17"
+    },
+    {
+      id: 30, emoji: "🖨️", category: "Electronics",
+      photos: ["KakaoTalk_Photo_2026-07-19-20-32-59 005 Small.jpeg"],
+      title: "Brother DCP-L2540DW Wireless Laser Printer",
+      desc: "Monochrome laser all-in-one with print, scan, and copy. Wireless + Ethernet connectivity, automatic duplex printing, 30 ppm print speed, 250-sheet paper tray, and 35-page ADF.",
+      retail: 120, price: 35, sold: false, available_from: null
     },
     {
       id: 4, emoji: "🖥️", category: "Electronics",
@@ -592,12 +599,6 @@
       retail: 50, price: 10, sold: false, available_from: null
     },
     {
-      id: 10, emoji: "🍟", category: "Kitchen",
-      title: "Cosori Pro Gen 2 Air Fryer — CO159-AF, 5.8QT",
-      desc: "5.8-quart air fryer with 13 one-touch cooking functions. Large square basket fits up to 5lb chicken. Dishwasher-safe basket.",
-      retail: 99.99, price: 50, sold: false, available_from: null
-    },
-    {
       id: 12, emoji: "🫖", category: "Kitchen",
       photos: ["KakaoTalk_Photo_2026-07-19-20-34-03 013 Small.jpeg"],
       title: "Hamilton Beach Electric Kettle",
@@ -605,11 +606,10 @@
       retail: null, price: 5, sold: false, available_from: null
     },
     {
-      id: 14, emoji: "🍚", category: "Kitchen",
-      photos: ["IMG_0309.jpeg"],
-      title: "Cuckoo 5QT Multi-Pressure Cooker — CMC-QSB501S",
-      desc: "8-in-1 Korean pressure cooker: rice, slow cook, steam, saute, yogurt, soup and more. 5-quart stainless steel inner pot, auto-clean mode, voice guide. Made in Korea.",
-      retail: 149.99, price: 70, sold: true, available_from: null
+      id: 10, emoji: "🍟", category: "Kitchen",
+      title: "Cosori Pro Gen 2 Air Fryer — CO159-AF, 5.8QT",
+      desc: "5.8-quart air fryer with 13 one-touch cooking functions. Large square basket fits up to 5lb chicken. Dishwasher-safe basket.",
+      retail: 99.99, price: 30, sold: true, available_from: null
     },
     {
       id: 9, emoji: "🍟", category: "Kitchen",
@@ -617,6 +617,13 @@
       title: "Chefman Air Fryer + Grill — RJ38-AFG, 7L",
       desc: "7-liter indoor air fryer + grill combo. Air fry, grill, roast, bake, or broil. Dishwasher-safe parts.",
       retail: 99, price: 45, sold: true, available_from: null
+    },
+    {
+      id: 14, emoji: "🍚", category: "Kitchen",
+      photos: ["IMG_0309.jpeg"],
+      title: "Cuckoo 5QT Multi-Pressure Cooker — CMC-QSB501S",
+      desc: "8-in-1 Korean pressure cooker: rice, slow cook, steam, saute, yogurt, soup and more. 5-quart stainless steel inner pot, auto-clean mode, voice guide. Made in Korea.",
+      retail: 149.99, price: 70, sold: true, available_from: null
     },
 
     // ── 🏠 Home & Other ── (photos first, price descending)
@@ -642,32 +649,11 @@
       retail: 79.99, price: 20, sold: false, available_from: null
     },
     {
-      id: 46, emoji: "🪑", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-13-31-19 002.jpeg"],
-      title: "Coleman Oversized Quad Camping Chair — Black",
-      desc: "Classic Coleman folding quad chair with padded seat and back, built-in cup holders, and zippered side pocket. Folds flat for easy storage. Good used condition.",
-      retail: 45, price: 10, sold: false, available_from: null
-    },
-    {
       id: 43, emoji: "💧", category: "Home & Other",
       photos: ["KakaoTalk_Photo_2026-08-16-11-06-48 005.jpeg"],
       title: "Vicks Warm Mist Humidifier",
       desc: "Vicks warm mist humidifier. Provides soothing steam to relieve congestion and dry air. Easy to fill and clean.",
       retail: 49, price: 10, sold: false, available_from: null
-    },
-    {
-      id: 22, emoji: "🗄️", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-15-17-19.jpeg"],
-      title: "IKEA LLIS Metal 3-Tier Shelving Unit (Galvanized)",
-      desc: "IKEA LLIS 3-tier galvanized steel shelf unit (90x37x74cm). Industrial look with durable galvanized finish. Great for kitchen, bathroom, or office storage.",
-      retail: 60, price: 10, sold: false, available_from: null
-    },
-    {
-      id: 40, emoji: "🗄️", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-05-48 002.jpeg"],
-      title: "White 3-Tier Storage Shelf",
-      desc: "Simple white 3-tier storage shelf. Lightweight and easy to assemble/disassemble.",
-      retail: 30, price: 10, sold: false, available_from: null
     },
     {
       id: 27, emoji: "💡", category: "Home & Other",
@@ -682,6 +668,27 @@
       title: "Conair 1875W Hair Dryer — White",
       desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage.",
       retail: 25, price: 8, sold: false, available_from: null
+    },
+    {
+      id: 22, emoji: "🗄️", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-08-16-15-17-19.jpeg"],
+      title: "IKEA LLIS Metal 3-Tier Shelving Unit (Galvanized)",
+      desc: "IKEA LLIS 3-tier galvanized steel shelf unit (90x37x74cm). Industrial look with durable galvanized finish.",
+      retail: 60, price: 10, sold: true, available_from: null
+    },
+    {
+      id: 46, emoji: "🪑", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-08-16-13-31-19 002.jpeg"],
+      title: "Coleman Oversized Quad Camping Chair — Black",
+      desc: "Classic Coleman folding quad chair with padded seat and back, built-in cup holders, and zippered side pocket. Folds flat for easy storage.",
+      retail: 45, price: 10, sold: true, available_from: null
+    },
+    {
+      id: 40, emoji: "🗄️", category: "Home & Other",
+      photos: ["KakaoTalk_Photo_2026-08-16-11-05-48 002.jpeg"],
+      title: "White 3-Tier Storage Shelf",
+      desc: "Simple white 3-tier storage shelf. Lightweight and easy to assemble/disassemble.",
+      retail: 30, price: 10, sold: true, available_from: null
     },
   ];
 
