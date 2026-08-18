@@ -7,398 +7,82 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #FAFAF7;
-      --surface: #FFFFFF;
-      --border: #E8E8E2;
-      --text: #1A1A1A;
-      --muted: #888880;
-      --amber: #F59E0B;
-      --amber-lt: #FEF3C7;
-      --red: #EF4444;
-      --green: #16A34A;
-      --sold-bg: #F1F1EE;
-      --sold-text: #AAAAAA;
+      --bg: #FAFAF7; --surface: #FFFFFF; --border: #E8E8E2; --text: #1A1A1A;
+      --muted: #888880; --amber: #F59E0B; --amber-lt: #FEF3C7; --sold-bg: #F1F1EE; --sold-text: #AAAAAA;
     }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* ── Header ── */
-    header {
-      background: var(--text);
-      color: #fff;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    header { background: var(--text); color: #fff; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
     .logo { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px; }
     .logo span { color: var(--amber); }
     .header-note { font-size: 0.78rem; color: #aaa; }
-
-    /* ── Hero ── */
-    .hero {
-      padding: 48px 24px 36px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-    }
+    .hero { padding: 48px 24px 36px; max-width: 960px; margin: 0 auto; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; }
     .hero h1 em { font-style: normal; color: var(--amber); }
-    .hero p {
-      margin-top: 12px;
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.6;
-    }
-    .hero-cta {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .badge {
-      background: var(--amber-lt);
-      color: #92400E;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 999px;
-    }
-
-    /* ── Controls ── */
-    .controls {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px 20px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 7px 16px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-      font-family: inherit;
-      color: var(--text);
-    }
+    .hero p { margin-top: 12px; font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.6; }
+    .hero-cta { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .badge { background: var(--amber-lt); color: #92400E; font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; }
+    .controls { max-width: 960px; margin: 0 auto; padding: 0 24px 20px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .filter-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 7px 16px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: inherit; color: var(--text); }
     .filter-btn:hover { border-color: var(--text); }
-    .filter-btn.active {
-      background: var(--text);
-      color: #fff;
-      border-color: var(--text);
-    }
+    .filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
     .item-count { margin-left: auto; font-size: 0.82rem; color: var(--muted); }
-
-    /* ── Grid ── */
-    .grid {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
-
-    /* ── Card ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.15s, transform 0.15s;
-      cursor: pointer;
-    }
+    .grid { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.15s, transform 0.15s; cursor: pointer; }
     .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-2px); }
     .card.sold { opacity: 0.55; cursor: default; pointer-events: none; }
     .card.sold:hover { box-shadow: none; transform: none; }
-
-    .card-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      background: var(--sold-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      flex-shrink: 0;
-    }
+    .card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--sold-bg); display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; }
     .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .card-body {
-      padding: 14px 16px 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .card-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      line-height: 1.35;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .card-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* price block */
-    .card-price {
-      margin-top: auto;
-      padding-top: 10px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 8px;
-    }
+    .card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .card-title { font-size: 0.92rem; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-price { margin-top: auto; padding-top: 10px; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; }
     .price-main { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; line-height: 1; }
     .price-orig { font-size: 0.75rem; color: var(--muted); text-decoration: line-through; }
     .price-stack { display: flex; flex-direction: column; gap: 2px; }
-    .discount-pill {
-      background: var(--amber);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    .sold-pill {
-      background: var(--sold-bg);
-      color: var(--sold-text);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 999px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    /* availability badge */
-    .avail-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 2px;
-    }
+    .discount-pill { background: var(--amber); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+    .sold-pill { background: var(--sold-bg); color: var(--sold-text); font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .avail-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; margin-bottom: 2px; }
     .avail-now { background: #DCFCE7; color: #15803D; }
     .avail-later { background: #FEF9C3; color: #854D0E; }
-
-    /* offer button */
-    .offer-btn {
-      width: 100%;
-      margin-top: 10px;
-      padding: 9px;
-      background: var(--text);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s;
-    }
+    .offer-btn { width: 100%; margin-top: 10px; padding: 9px; background: var(--text); color: #fff; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.15s; }
     .offer-btn:hover { background: #333; }
-
-    /* ── Modal ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 16px; }
     .modal-overlay.open { display: flex; }
-    .modal {
-      background: var(--surface);
-      border-radius: 18px;
-      max-width: 480px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 28px;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 16px; right: 16px;
-      background: var(--sold-bg);
-      border: none;
-      border-radius: 50%;
-      width: 32px; height: 32px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-family: inherit;
-      color: var(--text);
-    }
+    .modal { background: var(--surface); border-radius: 18px; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 28px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: var(--sold-bg); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; color: var(--text); }
     .modal h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
     .modal .modal-item-price { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 18px; }
     .form-group { margin-bottom: 14px; }
-    .form-group label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 5px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-family: inherit;
-      background: var(--bg);
-      color: var(--text);
-      transition: border-color 0.15s;
-      resize: vertical;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus { outline: none; border-color: var(--text); }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+    .form-group input, .form-group textarea { width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-family: inherit; background: var(--bg); color: var(--text); transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--text); }
     .offer-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
-    .submit-btn {
-      width: 100%;
-      padding: 12px;
-      background: var(--amber);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s;
-    }
+    .submit-btn { width: 100%; padding: 12px; background: var(--amber); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.15s; }
     .submit-btn:hover { background: #D97706; }
     .success-msg { display: none; text-align: center; padding: 20px 0 8px; }
     .success-msg .check { font-size: 2.5rem; }
     .success-msg h3 { font-size: 1.1rem; font-weight: 700; margin-top: 8px; }
     .success-msg p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
-
-    /* ── Slideshow ── */
-    .slideshow {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--sold-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .slideshow img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .slideshow .slide-emoji {
-      font-size: 4rem;
-    }
-    .slide-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.35);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 36px; height: 36px;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 10;
-    }
+    .slideshow { position: relative; width: 100%; aspect-ratio: 4/3; background: var(--sold-bg); border-radius: 10px; overflow: hidden; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
+    .slideshow img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .slideshow .slide-emoji { font-size: 4rem; }
+    .slide-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.35); color: #fff; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
     .slide-btn.prev { left: 8px; }
     .slide-btn.next { right: 8px; }
-    .slide-dots {
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 5px;
-    }
-    .slide-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.5);
-      cursor: pointer;
-      transition: background 0.15s;
-    }
+    .slide-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; }
+    .slide-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.15s; }
     .slide-dot.active { background: #fff; }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 500px) {
-      .hero { padding: 32px 16px 24px; }
-      .controls { padding: 0 16px 16px; }
-      .grid { padding: 0 16px 60px; gap: 12px; }
-    }
+    footer { text-align: center; padding: 24px; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 500px) { .hero { padding: 32px 16px 24px; } .controls { padding: 0 16px 16px; } .grid { padding: 0 16px 60px; gap: 12px; } }
   </style>
 </head>
 <body>
-
 <header>
   <div class="logo">Moving<span>Sale</span> 📦</div>
   <div class="header-note">Hyde Park, Chicago · Aug 2026</div>
 </header>
-
 <section class="hero">
   <h1>I'm moving.<br/><em>Everything goes.</em></h1>
   <p>Picked up great stuff over the years — now it needs a new home. Prices are fair, but feel free to make an offer. Best bid wins.</p>
@@ -409,7 +93,6 @@
     <span class="badge">🔄 More items & photos added daily</span>
   </div>
 </section>
-
 <div class="controls">
   <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="Furniture">🛋️ Furniture</button>
@@ -419,10 +102,7 @@
   <button class="filter-btn" data-filter="sold">Sold</button>
   <span class="item-count" id="itemCount"></span>
 </div>
-
 <div class="grid" id="grid"></div>
-
-<!-- Offer Modal -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" id="modalClose">✕</button>
@@ -437,22 +117,10 @@
       <h2 id="modalTitle">Make an Offer</h2>
       <div class="modal-item-price" id="modalPrice"></div>
       <p class="offer-note">My asking price is listed above. Offer anything — if it's the best I get, it's yours. I'll reach out to confirm.<br/><br/>⚠️ After clicking "Send Offer", a Google Form will open in a new tab with your details pre-filled. <strong>Please click Submit on the form to complete your offer.</strong></p>
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" id="fieldName" placeholder="Jane Smith" />
-      </div>
-      <div class="form-group">
-        <label>Contact (Phone / Email / Signal)</label>
-        <input type="text" id="fieldContact" placeholder="your@email.com or (312) 555-0000" />
-      </div>
-      <div class="form-group">
-        <label>Your Offer ($)</label>
-        <input type="text" id="fieldOffer" placeholder="e.g. $45.00" />
-      </div>
-      <div class="form-group">
-        <label>Message (optional)</label>
-        <textarea id="fieldMessage" rows="3" placeholder="Any questions or notes..."></textarea>
-      </div>
+      <div class="form-group"><label>Your Name</label><input type="text" id="fieldName" placeholder="Jane Smith" /></div>
+      <div class="form-group"><label>Contact (Phone / Email / Signal)</label><input type="text" id="fieldContact" placeholder="your@email.com" /></div>
+      <div class="form-group"><label>Your Offer ($)</label><input type="text" id="fieldOffer" placeholder="e.g. $45.00" /></div>
+      <div class="form-group"><label>Message (optional)</label><textarea id="fieldMessage" rows="3" placeholder="Any questions or notes..."></textarea></div>
       <button class="submit-btn" id="submitBtn">Send Offer ✉️</button>
     </div>
     <div class="success-msg" id="successMsg">
@@ -462,251 +130,56 @@
     </div>
   </div>
 </div>
-
-<footer>
-  Made with ♥ to fund my next adventure &nbsp;·&nbsp; All items in Hyde Park, Chicago &nbsp;·&nbsp; Pickup only
-</footer>
+<footer>Made with ♥ to fund my next adventure &nbsp;·&nbsp; All items in Hyde Park, Chicago &nbsp;·&nbsp; Pickup only</footer>
 <script>
   const items = [
-    // ── 🛋️ Furniture ── (photos first, price descending)
-    {
-      id: 3, emoji: "🪑", category: "Furniture",
-      photos: ["IMG_0305.jpeg"],
-      title: "Knoll Generation Chair — Fully Loaded, Gray",
-      desc: "Iconic Knoll Generation ergonomic chair with all options. Flex back net, adjustable arms, lumbar support, seat depth adjustment, tilt lock. Good condition.",
-      retail: 1495, price: 200, sold: false, available_from: null
-    },
-    {
-      id: 45, emoji: "🛏️", category: "Furniture",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-51-28.jpeg"],
-      title: "Sealy Queen Mattress — PP Deveraux CF",
-      desc: "Sealy queen-size innerspring mattress (60x79\"). Polyurethane foam, fiber batting, and innerspring unit construction. Manufactured Sept 2016. Good used condition — no stains or damage.",
-      retail: 1000, price: 50, sold: false, available_from: "2026-08-19"
-    },
-    {
-      id: 1, emoji: "🛋️", category: "Furniture",
-      photos: ["IMG_0291.jpeg", "IMG_0290.jpeg"],
-      title: "IKEA Queen Size Sofa Bed — Blue",
-      desc: "Foldable sofa bed in blue fabric. Functions as both a sofa and a single bed. Great for small spaces or guests.",
-      retail: 599.99, price: 50, sold: false, available_from: "2026-08-19"
-    },
-    {
-      id: 16, emoji: "🪑", category: "Furniture",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-32-41 003 Small.jpeg"],
-      title: "White Molded Plastic Chair (Eames-style), Wood Legs",
-      desc: "Modern sculpted plastic shell chair with natural wood legs. Lightweight and versatile — works as a desk chair, dining chair, or accent piece. Good used condition.",
-      retail: 80, price: 10, sold: false, available_from: null
-    },
-    {
-      id: 44, emoji: "🪑", category: "Furniture",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-05-32 001.jpeg"],
-      title: "Black 2-Tier Side Table",
-      desc: "Black metal 2-tier side table. Compact and versatile — great next to a sofa or bed. Used condition.",
-      retail: 35, price: 5, sold: false, available_from: null
-    },
-    {
-      id: 26, emoji: "🪑", category: "Furniture",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-34-12 014 Small.jpeg"],
-      title: "IKEA LACK Side Table — Red (Discontinued)",
-      desc: "Classic IKEA LACK side table in discontinued red finish. Compact square design (21 5/8\" x 21 5/8\"). Lightweight and easy to move. Red colorway no longer available in stores.",
-      retail: 9.99, price: 5, sold: false, available_from: null
-    },
-    {
-      id: 2, emoji: "🖥️", category: "Furniture",
-      title: "IKEA Desk — Large Wood",
-      desc: "Large IKEA desk with plenty of surface area for dual monitors and accessories. Solid build, good condition.",
-      retail: null, price: 75, sold: false, available_from: null
-    },
+    // ── 🛋️ Furniture ──
+    { id: 3, emoji: "🪑", category: "Furniture", photos: ["IMG_0305.jpeg"], title: "Knoll Generation Chair — Fully Loaded, Gray", desc: "Iconic Knoll Generation ergonomic chair with all options. Flex back net, adjustable arms, lumbar support, seat depth adjustment, tilt lock. Good condition.", retail: 1495, price: 200, sold: false, available_from: null },
+    { id: 45, emoji: "🛏️", category: "Furniture", photos: ["KakaoTalk_Photo_2026-08-16-11-51-28.jpeg"], title: "Sealy Queen Mattress — PP Deveraux CF", desc: "Sealy queen-size innerspring mattress (60x79\"). Manufactured Sept 2016. Good used condition — no stains or damage.", retail: 1000, price: 50, sold: false, available_from: "2026-08-19" },
+    { id: 1, emoji: "🛋️", category: "Furniture", photos: ["IMG_0291.jpeg", "IMG_0290.jpeg"], title: "IKEA Queen Size Sofa Bed — Blue", desc: "Foldable sofa bed in blue fabric. Functions as both a sofa and a single bed. Great for small spaces or guests.", retail: 599.99, price: 50, sold: false, available_from: "2026-08-19" },
+    { id: 16, emoji: "🪑", category: "Furniture", photos: ["KakaoTalk_Photo_2026-07-19-20-32-41 003 Small.jpeg"], title: "White Molded Plastic Chair (Eames-style), Wood Legs", desc: "Modern sculpted plastic shell chair with natural wood legs. Lightweight and versatile. Good used condition.", retail: 80, price: 10, sold: false, available_from: null },
+    { id: 44, emoji: "🪑", category: "Furniture", photos: ["KakaoTalk_Photo_2026-08-16-11-05-32 001.jpeg"], title: "Black 2-Tier Side Table", desc: "Black metal 2-tier side table. Compact and versatile — great next to a sofa or bed.", retail: 35, price: 5, sold: false, available_from: null },
+    { id: 2, emoji: "🖥️", category: "Furniture", title: "IKEA Desk — Large Wood", desc: "Large IKEA desk with plenty of surface area for dual monitors and accessories. Solid build, good condition.", retail: null, price: 75, sold: false, available_from: null },
 
-    // ── 🖥️ Electronics ── (photos first, price descending)
-    {
-      id: 47, emoji: "🎮", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-08-16-13-31-16 001.jpeg"],
-      title: "Nintendo Switch Console — Neon Blue/Red with Dock",
-      desc: "Nintendo Switch console with neon blue/red Joy-Cons and dock. Plays both handheld and TV mode. No game cartridges included. Good used condition.",
-      retail: 299.99, price: 60, sold: false, available_from: null
-    },
-    {
-      id: 48, emoji: "🧊", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-08-17-10-13-08.jpeg"],
-      title: "RCA 3.2 Cu. Ft. Mini Refrigerator — Platinum Stainless",
-      desc: "RCA compact mini fridge with small freezer compartment, adjustable thermostat, and reversible door. Great for dorm, office, or bedroom. Platinum stainless finish. Good used condition.",
-      retail: 185, price: 40, sold: false, available_from: null
-    },
-    {
-      id: 24, emoji: "🧹", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-07-21-18-04-21 005 Small.jpeg"],
-      title: "Dyson V6 Cordless Vacuum — with Wall Dock & Box",
-      desc: "Dyson V6 cordless stick vacuum with powerful digital motor spinning up to 110,000 RPM. 2-Tier Radial cyclone technology for strong suction. Up to 20 minutes of runtime. Converts to handheld. Includes wall-mount dock and original box.",
-      retail: 300, price: 100, sold: false, available_from: null
-    },
-    {
-      id: 5, emoji: "🖥️", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-07-21-18-03-33 001 Small.jpeg"],
-      title: "LG 29\" UltraWide Monitor — 29UB55, 2560x1080 IPS",
-      desc: "29\" 21:9 UltraWide IPS panel, 2560x1080 resolution, height-adjustable stand, 4-screen split, dual HDMI + DisplayPort + DVI-D. Great for productivity and multitasking.",
-      retail: 283.99, price: 100, sold: false, available_from: null
-    },
-    {
-      id: 25, emoji: "🤖", category: "Electronics",
-      photos: ["IMG_0307.jpeg"],
-      title: "Roborock S5 Robot Vacuum",
-      desc: "Roborock S5 robot vacuum with LiDAR laser navigation and automatic floor mapping. 2,000Pa suction, up to 150 minutes runtime. App control via Roborock app. Charging dock included.",
-      retail: 439.99, price: 50, sold: false, available_from: "2026-08-17"
-    },
-    {
-      id: 30, emoji: "🖨️", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-32-59 005 Small.jpeg"],
-      title: "Brother DCP-L2540DW Wireless Laser Printer",
-      desc: "Monochrome laser all-in-one with print, scan, and copy. Wireless + Ethernet connectivity, automatic duplex printing, 30 ppm print speed, 250-sheet paper tray, and 35-page ADF.",
-      retail: 120, price: 35, sold: false, available_from: null
-    },
-    {
-      id: 4, emoji: "🖥️", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-07-21-18-03-38 002 Small.jpeg"],
-      title: "Dell 24\" Monitor — S2421H, Full HD IPS",
-      desc: "23.8\" IPS panel, Full HD 1080p at 75Hz, AMD FreeSync, 99% sRGB, ultra-thin 3-sided bezel, dual HDMI ports and built-in speakers. Like new condition.",
-      retail: 134.99, price: 50, sold: true, available_from: null
-    },
-    {
-      id: 6, emoji: "🖥️", category: "Electronics",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-36 009 Small.jpeg"],
-      title: "ViewSonic 24\" Monitor — VX2450wm-LED, Full HD",
-      desc: "23.6\" Full HD 1080p LED monitor. VGA + DVI inputs, built-in stereo speakers, VESA mount compatible.",
-      retail: null, price: 20, sold: true, available_from: null
-    },
+    // ── 🖥️ Electronics ──
+    { id: 24, emoji: "🧹", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-21-18-04-21 005 Small.jpeg"], title: "Dyson V6 Cordless Vacuum — with Wall Dock & Box", desc: "Dyson V6 cordless stick vacuum. Powerful digital motor, up to 20 minutes runtime. Converts to handheld. Includes wall-mount dock and original box.", retail: 300, price: 100, sold: false, available_from: null },
+    { id: 5, emoji: "🖥️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-21-18-03-33 001 Small.jpeg"], title: "LG 29\" UltraWide Monitor — 29UB55, 2560x1080 IPS", desc: "29\" 21:9 UltraWide IPS panel, 2560x1080 resolution, height-adjustable stand, dual HDMI + DisplayPort + DVI-D.", retail: 283.99, price: 100, sold: false, available_from: null },
+    { id: 48, emoji: "🧊", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-10-13-08.jpeg"], title: "RCA 3.2 Cu. Ft. Mini Refrigerator — Platinum Stainless", desc: "RCA compact mini fridge with small freezer compartment, adjustable thermostat, and reversible door. Great for dorm, office, or bedroom.", retail: 185, price: 40, sold: false, available_from: null },
+    { id: 49, emoji: "🖱️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-16-23-47 001.jpeg"], title: "Logitech MX Master 3 Wireless Mouse — Graphite", desc: "Premium wireless mouse with MagSpeed scroll wheel, multi-device connectivity (up to 3 devices), ergonomic design, USB-C charging.", retail: 99, price: 40, sold: false, available_from: null },
+    { id: 50, emoji: "⌨️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-16-23-51 002.jpeg"], title: "Logitech MX Keys Mini Wireless Keyboard — Pale Gray", desc: "Compact wireless keyboard with backlit keys, multi-device connectivity, USB-C charging. Mac/Windows compatible.", retail: 99, price: 40, sold: false, available_from: null },
+    { id: 51, emoji: "⌨️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-16-23-58 003.jpeg"], title: "Logitech MX Keys Wireless Keyboard (Full-size) — Space Gray", desc: "Full-size wireless keyboard with numpad, backlit keys, multi-device connectivity. Mac layout.", retail: 119, price: 45, sold: false, available_from: null },
+    { id: 25, emoji: "🤖", category: "Electronics", photos: ["IMG_0307.jpeg"], title: "Roborock S5 Robot Vacuum", desc: "Roborock S5 with LiDAR laser navigation and automatic floor mapping. 2,000Pa suction, up to 150 minutes runtime. Charging dock included.", retail: 439.99, price: 50, sold: false, available_from: "2026-08-17" },
+    { id: 30, emoji: "🖨️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-19-20-32-59 005 Small.jpeg"], title: "Brother DCP-L2540DW Wireless Laser Printer", desc: "Monochrome laser all-in-one with print, scan, and copy. Wireless + Ethernet, automatic duplex, 30 ppm, 250-sheet tray.", retail: 120, price: 35, sold: false, available_from: null },
+    { id: 47, emoji: "🎮", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-16-13-31-16 001.jpeg"], title: "Nintendo Switch Console — Neon Blue/Red with Dock", desc: "Nintendo Switch with Joy-Cons and dock. Good used condition.", retail: 299.99, price: 60, sold: true, available_from: null },
+    { id: 4, emoji: "🖥️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-21-18-03-38 002 Small.jpeg"], title: "Dell 24\" Monitor — S2421H, Full HD IPS", desc: "23.8\" IPS panel, Full HD 1080p at 75Hz, AMD FreeSync. Like new condition.", retail: 134.99, price: 50, sold: true, available_from: null },
+    { id: 6, emoji: "🖥️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-19-20-33-36 009 Small.jpeg"], title: "ViewSonic 24\" Monitor — VX2450wm-LED, Full HD", desc: "23.6\" Full HD 1080p LED monitor. VGA + DVI inputs, built-in speakers.", retail: null, price: 20, sold: true, available_from: null },
 
-    // ── 🍳 Kitchen ── (photos first, price descending)
-    {
-      id: 15, emoji: "🍽️", category: "Kitchen",
-      photos: ["IMG_0306.jpeg"],
-      title: "Novete Portable Countertop Dishwasher — TDQR01",
-      desc: "Compact countertop dishwasher with 5L built-in water tank. No installation needed. 5 wash programs including Baby Care mode, air-dry function, 4 place settings.",
-      retail: 279.99, price: 75, sold: false, available_from: "2026-08-17"
-    },
-    {
-      id: 11, emoji: "📡", category: "Kitchen",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-25 008 Small.jpeg"],
-      title: "Insignia 0.7 Cu. Ft. Compact Microwave — NS-MW07BK0",
-      desc: "0.7 cu. ft. countertop microwave, 700W, 6 cooking programs, auto defrost, rotating turntable. Compact size perfect for apartments.",
-      retail: 79.99, price: 20, sold: false, available_from: "2026-08-17"
-    },
-    {
-      id: 42, emoji: "☕", category: "Kitchen",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-06-29 004.jpeg"],
-      title: "Gooseneck Electric Pour-Over Kettle with Temperature Control",
-      desc: "Stainless steel gooseneck electric kettle with temperature control base. Perfect for pour-over coffee or tea.",
-      retail: 50, price: 10, sold: false, available_from: null
-    },
-    {
-      id: 12, emoji: "🫖", category: "Kitchen",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-34-03 013 Small.jpeg"],
-      title: "Hamilton Beach Electric Kettle",
-      desc: "Stainless steel electric kettle. Fast boil, good capacity. Works perfectly.",
-      retail: null, price: 5, sold: false, available_from: null
-    },
-    {
-      id: 10, emoji: "🍟", category: "Kitchen",
-      title: "Cosori Pro Gen 2 Air Fryer — CO159-AF, 5.8QT",
-      desc: "5.8-quart air fryer with 13 one-touch cooking functions. Large square basket fits up to 5lb chicken. Dishwasher-safe basket.",
-      retail: 99.99, price: 30, sold: true, available_from: null
-    },
-    {
-      id: 9, emoji: "🍟", category: "Kitchen",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-32-49 004 Small.jpeg"],
-      title: "Chefman Air Fryer + Grill — RJ38-AFG, 7L",
-      desc: "7-liter indoor air fryer + grill combo. Air fry, grill, roast, bake, or broil. Dishwasher-safe parts.",
-      retail: 99, price: 45, sold: true, available_from: null
-    },
-    {
-      id: 14, emoji: "🍚", category: "Kitchen",
-      photos: ["IMG_0309.jpeg"],
-      title: "Cuckoo 5QT Multi-Pressure Cooker — CMC-QSB501S",
-      desc: "8-in-1 Korean pressure cooker: rice, slow cook, steam, saute, yogurt, soup and more. 5-quart stainless steel inner pot, auto-clean mode, voice guide. Made in Korea.",
-      retail: 149.99, price: 70, sold: true, available_from: null
-    },
+    // ── 🍳 Kitchen ──
+    { id: 15, emoji: "🍽️", category: "Kitchen", photos: ["IMG_0306.jpeg"], title: "Novete Portable Countertop Dishwasher — TDQR01", desc: "Compact countertop dishwasher with 5L built-in water tank. No installation needed. 5 wash programs, air-dry, 4 place settings.", retail: 279.99, price: 75, sold: false, available_from: "2026-08-17" },
+    { id: 11, emoji: "📡", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-07-19-20-33-25 008 Small.jpeg"], title: "Insignia 0.7 Cu. Ft. Compact Microwave — NS-MW07BK0", desc: "0.7 cu. ft. countertop microwave, 700W, 6 cooking programs, auto defrost, rotating turntable.", retail: 79.99, price: 20, sold: false, available_from: "2026-08-17" },
+    { id: 42, emoji: "☕", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-08-16-11-06-29 004.jpeg"], title: "Gooseneck Electric Pour-Over Kettle with Temperature Control", desc: "Stainless steel gooseneck electric kettle with temperature control base. Perfect for pour-over coffee or tea.", retail: 50, price: 10, sold: false, available_from: null },
+    { id: 12, emoji: "🫖", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-07-19-20-34-03 013 Small.jpeg"], title: "Hamilton Beach Electric Kettle", desc: "Stainless steel electric kettle. Fast boil, good capacity. Works perfectly.", retail: null, price: 5, sold: true, available_from: null },
 
-    // ── 🏠 Home & Other ── (photos first, price descending)
-    {
-      id: 21, emoji: "❄️", category: "Home & Other",
-      photos: ["IMG_0308.jpeg"],
-      title: "Haier Window AC — HWE12XCR-LD, 12,000 BTU",
-      desc: "Haier 12,000 BTU window air conditioner. Cools rooms up to 550 sq ft. 3 cooling/fan speeds, Auto Cool, dehumidify, energy save, 24-hour timer, sleep mode, remote included.",
-      retail: 319.99, price: 100, sold: false, available_from: "2026-08-17"
-    },
-    {
-      id: 39, emoji: "☕", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-21-18-04-04 004 Small.jpeg"],
-      title: "Nespresso VertuoPlus Coffee & Espresso Maker — Matte Black",
-      desc: "Single-serve coffee and espresso maker with Centrifusion technology. Brews 4 cup sizes. 15-20 second heat-up, auto-eject capsule system, auto shutoff after 9 minutes.",
-      retail: 217.88, price: 50, sold: false, available_from: null
-    },
-    {
-      id: 20, emoji: "🦷", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-32-21 001.jpeg"],
-      title: "Waterpik Aquarius Water Flosser — WP-660C",
-      desc: "ADA-accepted with 10 pressure settings, Floss and Massage modes, 7 color-coded tips, 22oz reservoir. #1 dentist-recommended water flosser brand.",
-      retail: 79.99, price: 20, sold: false, available_from: null
-    },
-    {
-      id: 43, emoji: "💧", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-06-48 005.jpeg"],
-      title: "Vicks Warm Mist Humidifier",
-      desc: "Vicks warm mist humidifier. Provides soothing steam to relieve congestion and dry air. Easy to fill and clean.",
-      retail: 49, price: 10, sold: false, available_from: null
-    },
-    {
-      id: 27, emoji: "💡", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-33-51 011 Small.jpeg"],
-      title: "IKEA FILLSTA Table Lamp — White (Discontinued)",
-      desc: "Discontinued IKEA FILLSTA table lamp with iconic white petal-shaped shade and three slender metal legs. Hard to find new.",
-      retail: 35, price: 10, sold: false, available_from: null
-    },
-    {
-      id: 19, emoji: "💇", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"],
-      title: "Conair 1875W Hair Dryer — White",
-      desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage.",
-      retail: 25, price: 8, sold: false, available_from: null
-    },
-    {
-      id: 22, emoji: "🗄️", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-15-17-19.jpeg"],
-      title: "IKEA LLIS Metal 3-Tier Shelving Unit (Galvanized)",
-      desc: "IKEA LLIS 3-tier galvanized steel shelf unit (90x37x74cm). Industrial look with durable galvanized finish.",
-      retail: 60, price: 10, sold: true, available_from: null
-    },
-    {
-      id: 46, emoji: "🪑", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-13-31-19 002.jpeg"],
-      title: "Coleman Oversized Quad Camping Chair — Black",
-      desc: "Classic Coleman folding quad chair with padded seat and back, built-in cup holders, and zippered side pocket. Folds flat for easy storage.",
-      retail: 45, price: 10, sold: true, available_from: null
-    },
-    {
-      id: 40, emoji: "🗄️", category: "Home & Other",
-      photos: ["KakaoTalk_Photo_2026-08-16-11-05-48 002.jpeg"],
-      title: "White 3-Tier Storage Shelf",
-      desc: "Simple white 3-tier storage shelf. Lightweight and easy to assemble/disassemble.",
-      retail: 30, price: 10, sold: true, available_from: null
-    },
+    // ── 🏠 Home & Other ──
+    { id: 21, emoji: "❄️", category: "Home & Other", photos: ["IMG_0308.jpeg"], title: "Haier Window AC — HWE12XCR-LD, 12,000 BTU", desc: "Haier 12,000 BTU window AC. Cools up to 550 sq ft. 3 speeds, Auto Cool, dehumidify, 24-hour timer, sleep mode, remote included.", retail: 319.99, price: 100, sold: false, available_from: "2026-08-17" },
+    { id: 39, emoji: "☕", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-21-18-04-04 004 Small.jpeg"], title: "Nespresso VertuoPlus Coffee & Espresso Maker — Matte Black", desc: "Single-serve coffee maker with Centrifusion technology. Brews 4 cup sizes. 15-20 sec heat-up, auto-eject capsule, auto shutoff.", retail: 217.88, price: 50, sold: false, available_from: null },
+    { id: 52, emoji: "🔊", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-08-17-19-20-54.jpeg"], title: "Google Home Mini — Coral & Charcoal (Set of 2)", desc: "Google Home Mini smart speakers, set of 2 (coral and charcoal). Voice control, music streaming, smart home control. Factory reset and ready to use.", retail: 98, price: 20, sold: false, available_from: null },
+    { id: 20, emoji: "🦷", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-32-21 001.jpeg"], title: "Waterpik Aquarius Water Flosser — WP-660C", desc: "ADA-accepted with 10 pressure settings, Floss and Massage modes, 7 color-coded tips, 22oz reservoir.", retail: 79.99, price: 20, sold: false, available_from: null },
+    { id: 43, emoji: "💧", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-08-16-11-06-48 005.jpeg"], title: "Vicks Warm Mist Humidifier", desc: "Vicks warm mist humidifier. Soothing steam for congestion and dry air relief.", retail: 49, price: 10, sold: false, available_from: null },
+    { id: 27, emoji: "💡", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-33-51 011 Small.jpeg"], title: "IKEA FILLSTA Table Lamp — White (Discontinued)", desc: "Discontinued IKEA FILLSTA table lamp with iconic white petal-shaped shade and three slender metal legs.", retail: 35, price: 10, sold: false, available_from: null },
+    { id: 19, emoji: "💇", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"], title: "Conair 1875W Hair Dryer — White", desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage.", retail: 25, price: 8, sold: false, available_from: null },
+    { id: 26, emoji: "🪑", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-34-12 014 Small.jpeg"], title: "IKEA LACK Side Table — Red (Discontinued)", desc: "Classic IKEA LACK side table in discontinued red finish. Red colorway no longer available in stores.", retail: 9.99, price: 5, sold: true, available_from: null },
   ];
 
-  function formatPrice(n) {
-    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-  function discount(retail, price) {
-    return Math.round((1 - price / retail) * 100);
-  }
+  function formatPrice(n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function discount(retail, price) { return Math.round((1 - price / retail) * 100); }
   function availBadge(item) {
     if (item.sold) return '';
     if (!item.available_from) return `<span class="avail-badge avail-now">✅ Available now</span>`;
-    const today = new Date();
-    today.setHours(0,0,0,0);
+    const today = new Date(); today.setHours(0,0,0,0);
     const from = new Date(item.available_from);
     if (from <= today) return `<span class="avail-badge avail-now">✅ Available now</span>`;
-    const mo = from.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    return `<span class="avail-badge avail-later">🕐 Available after ${mo}</span>`;
+    return `<span class="avail-badge avail-later">🕐 Available after ${from.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>`;
   }
 
   const grid = document.getElementById('grid');
@@ -717,49 +190,20 @@
     let filtered = items;
     if (filter === 'sold') filtered = items.filter(i => i.sold);
     else if (filter !== 'all') filtered = items.filter(i => !i.sold && i.category === filter);
-    filtered = [
-      ...filtered.filter(i => i.photos && i.photos.length > 0),
-      ...filtered.filter(i => !i.photos || i.photos.length === 0)
-    ];
-    const available = items.filter(i => !i.sold).length;
-    itemCount.textContent = `${available} items available`;
+    filtered = [...filtered.filter(i => i.photos && i.photos.length > 0), ...filtered.filter(i => !i.photos || i.photos.length === 0)];
+    itemCount.textContent = `${items.filter(i => !i.sold).length} items available`;
     grid.innerHTML = filtered.map(item => {
       const disc = item.retail && item.price ? discount(item.retail, item.price) : 0;
-      const imgHTML = `<div class="card-img">
-        ${item.photos && item.photos.length > 0 ? `<img src="images/${item.photos[0]}" alt="${item.title}" onerror="this.style.display='none';this.parentElement.querySelector('.emoji-fallback').style.display='block'" />` : ''}
-        <span class="emoji-fallback" style="display:${item.photos && item.photos.length > 0 ? 'none' : 'block'};font-size:3rem">${item.emoji}</span>
-      </div>`;
-      return `
-        <div class="card ${item.sold ? 'sold' : ''}" data-id="${item.id}">
-          ${imgHTML}
-          <div class="card-body">
-            ${availBadge(item)}
-            <div class="card-title">${item.title}</div>
-            <div class="card-desc">${item.desc}</div>
-            <div class="card-price">
-              <div class="price-stack">
-                ${item.retail ? `<div class="price-orig">${formatPrice(item.retail)}</div>` : ''}
-                <div class="price-main">${item.price ? formatPrice(item.price) : '—'}</div>
-              </div>
-              ${item.sold ? `<span class="sold-pill">Sold</span>` : disc >= 10 ? `<span class="discount-pill">-${disc}%</span>` : ''}
-            </div>
-            ${!item.sold ? `<button class="offer-btn" data-id="${item.id}">Make an offer →</button>` : ''}
-          </div>
-        </div>`;
+      const imgHTML = `<div class="card-img">${item.photos && item.photos.length > 0 ? `<img src="images/${item.photos[0]}" alt="${item.title}" onerror="this.style.display='none';this.parentElement.querySelector('.emoji-fallback').style.display='block'" />` : ''}<span class="emoji-fallback" style="display:${item.photos && item.photos.length > 0 ? 'none' : 'block'};font-size:3rem">${item.emoji}</span></div>`;
+      return `<div class="card ${item.sold ? 'sold' : ''}" data-id="${item.id}">${imgHTML}<div class="card-body">${availBadge(item)}<div class="card-title">${item.title}</div><div class="card-desc">${item.desc}</div><div class="card-price"><div class="price-stack">${item.retail ? `<div class="price-orig">${formatPrice(item.retail)}</div>` : ''}<div class="price-main">${item.price ? formatPrice(item.price) : '—'}</div></div>${item.sold ? `<span class="sold-pill">Sold</span>` : disc >= 10 ? `<span class="discount-pill">-${disc}%</span>` : ''}</div>${!item.sold ? `<button class="offer-btn" data-id="${item.id}">Make an offer →</button>` : ''}</div></div>`;
     }).join('');
-    document.querySelectorAll('.offer-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => { e.stopPropagation(); openModal(parseInt(btn.dataset.id)); });
-    });
+    document.querySelectorAll('.offer-btn').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); openModal(parseInt(btn.dataset.id)); }));
   }
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
-      renderCards(currentFilter);
-    });
-  });
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active'); currentFilter = btn.dataset.filter; renderCards(currentFilter);
+  }));
 
   const overlay = document.getElementById('modalOverlay');
   const modalClose = document.getElementById('modalClose');
@@ -767,39 +211,25 @@
   const modalPrice = document.getElementById('modalPrice');
   const successMsg = document.getElementById('successMsg');
   const modalContent = document.getElementById('modalContent');
-  let activeItem = null;
-  let slideIndex = 0;
-  let slidePhotos = [];
+  let activeItem = null, slideIndex = 0, slidePhotos = [];
 
   function loadSlide(idx) {
-    const slideImg = document.getElementById('slideImg');
-    const slideEmoji = document.getElementById('slideEmoji');
-    const dots = document.querySelectorAll('.slide-dot');
-    slideImg.src = slidePhotos[idx];
-    slideImg.style.display = 'block';
-    slideEmoji.style.display = 'none';
+    const slideImg = document.getElementById('slideImg'), slideEmoji = document.getElementById('slideEmoji');
+    slideImg.src = slidePhotos[idx]; slideImg.style.display = 'block'; slideEmoji.style.display = 'none';
     slideImg.onerror = () => { slideImg.style.display = 'none'; slideEmoji.style.display = 'block'; };
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    document.querySelectorAll('.slide-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
     document.getElementById('slidePrev').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
     document.getElementById('slideNext').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
   }
 
   function buildSlides(item) {
-    const slideEmoji = document.getElementById('slideEmoji');
-    const slideImg = document.getElementById('slideImg');
-    const dotsEl = document.getElementById('slideDots');
-    slidePhotos = (item.photos || []).map(f => `images/${f}`);
-    slideIndex = 0;
-    slideImg.style.display = 'none';
-    slideEmoji.style.display = 'none';
-    dotsEl.innerHTML = '';
-    document.getElementById('slidePrev').style.display = 'none';
-    document.getElementById('slideNext').style.display = 'none';
+    const slideEmoji = document.getElementById('slideEmoji'), slideImg = document.getElementById('slideImg'), dotsEl = document.getElementById('slideDots');
+    slidePhotos = (item.photos || []).map(f => `images/${f}`); slideIndex = 0;
+    slideImg.style.display = 'none'; slideEmoji.style.display = 'none'; dotsEl.innerHTML = '';
+    document.getElementById('slidePrev').style.display = 'none'; document.getElementById('slideNext').style.display = 'none';
     if (slidePhotos.length === 0) { slideEmoji.textContent = item.emoji; slideEmoji.style.display = 'block'; return; }
     dotsEl.innerHTML = slidePhotos.map((_, i) => `<span class="slide-dot${i===0?' active':''}" data-i="${i}"></span>`).join('');
-    dotsEl.querySelectorAll('.slide-dot').forEach(dot => {
-      dot.addEventListener('click', () => { slideIndex = parseInt(dot.dataset.i); loadSlide(slideIndex); });
-    });
+    dotsEl.querySelectorAll('.slide-dot').forEach(dot => dot.addEventListener('click', () => { slideIndex = parseInt(dot.dataset.i); loadSlide(slideIndex); }));
     document.getElementById('slidePrev').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
     document.getElementById('slideNext').style.display = slidePhotos.length > 1 ? 'flex' : 'none';
     loadSlide(0);
@@ -812,11 +242,9 @@
     activeItem = items.find(i => i.id === id);
     modalTitle.textContent = activeItem.title;
     modalPrice.textContent = activeItem.price ? formatPrice(activeItem.price) : 'Make an offer';
-    successMsg.style.display = 'none';
-    modalContent.style.display = 'block';
+    successMsg.style.display = 'none'; modalContent.style.display = 'block';
     ['fieldName','fieldContact','fieldOffer','fieldMessage'].forEach(f => document.getElementById(f).value = '');
-    overlay.classList.add('open');
-    buildSlides(activeItem);
+    overlay.classList.add('open'); buildSlides(activeItem);
   }
 
   function closeModal() { overlay.classList.remove('open'); activeItem = null; }
@@ -831,8 +259,7 @@
     if (!name || !contact || !offerAmt) { alert('Please fill in your name, contact info, and offer amount!'); return; }
     const base = 'https://docs.google.com/forms/d/e/1FAIpQLSebEecwQOe7W1UsGuM73JaPfg35uDqIGlDjamkrfnDt4HNfgg/viewform';
     const params = new URLSearchParams({'entry.1170049700': activeItem.title, 'entry.1778267626': name, 'entry.1776579235': contact, 'entry.1421399265': offerAmt, 'entry.1753321076': message});
-    window.open(`${base}?${params.toString()}`, '_blank');
-    closeModal();
+    window.open(`${base}?${params.toString()}`, '_blank'); closeModal();
   });
 
   renderCards('all');
