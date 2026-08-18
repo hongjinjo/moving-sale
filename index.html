@@ -7,10 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #FAFAF7; --surface: #FFFFFF; --border: #E8E8E2; --text: #1A1A1A;
-      --muted: #888880; --amber: #F59E0B; --amber-lt: #FEF3C7; --sold-bg: #F1F1EE; --sold-text: #AAAAAA;
-    }
+    :root { --bg: #FAFAF7; --surface: #FFFFFF; --border: #E8E8E2; --text: #1A1A1A; --muted: #888880; --amber: #F59E0B; --amber-lt: #FEF3C7; --sold-bg: #F1F1EE; --sold-text: #AAAAAA; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
     header { background: var(--text); color: #fff; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
     .logo { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px; }
@@ -32,7 +29,7 @@
     .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.09); transform: translateY(-2px); }
     .card.sold { opacity: 0.55; cursor: default; pointer-events: none; }
     .card.sold:hover { box-shadow: none; transform: none; }
-    .card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--sold-bg); display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; }
+    .card-img { width: 100%; aspect-ratio: 4/3; background: var(--sold-bg); display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; overflow: hidden; }
     .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
     .card-title { font-size: 0.92rem; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -61,10 +58,6 @@
     .offer-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
     .submit-btn { width: 100%; padding: 12px; background: var(--amber); color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.15s; }
     .submit-btn:hover { background: #D97706; }
-    .success-msg { display: none; text-align: center; padding: 20px 0 8px; }
-    .success-msg .check { font-size: 2.5rem; }
-    .success-msg h3 { font-size: 1.1rem; font-weight: 700; margin-top: 8px; }
-    .success-msg p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
     .slideshow { position: relative; width: 100%; aspect-ratio: 4/3; background: var(--sold-bg); border-radius: 10px; overflow: hidden; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; }
     .slideshow img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .slideshow .slide-emoji { font-size: 4rem; }
@@ -116,17 +109,17 @@
       </div>
       <h2 id="modalTitle">Make an Offer</h2>
       <div class="modal-item-price" id="modalPrice"></div>
-      <p class="offer-note">My asking price is listed above. Offer anything — if it's the best I get, it's yours. I'll reach out to confirm.<br/><br/>⚠️ After clicking "Send Offer", a Google Form will open in a new tab with your details pre-filled. <strong>Please click Submit on the form to complete your offer.</strong></p>
+      <p class="offer-note">My asking price is listed above. Offer anything — if it's the best I get, it's yours.<br/><br/>⚠️ After clicking "Send Offer", a Google Form will open in a new tab with your details pre-filled. <strong>Please click Submit on the form to complete your offer.</strong></p>
       <div class="form-group"><label>Your Name</label><input type="text" id="fieldName" placeholder="Jane Smith" /></div>
-      <div class="form-group"><label>Contact (Phone / Email / Signal)</label><input type="text" id="fieldContact" placeholder="your@email.com" /></div>
+      <div class="form-group"><label>Contact (Phone / Email)</label><input type="text" id="fieldContact" placeholder="your@email.com" /></div>
       <div class="form-group"><label>Your Offer ($)</label><input type="text" id="fieldOffer" placeholder="e.g. $45.00" /></div>
       <div class="form-group"><label>Message (optional)</label><textarea id="fieldMessage" rows="3" placeholder="Any questions or notes..."></textarea></div>
       <button class="submit-btn" id="submitBtn">Send Offer ✉️</button>
     </div>
-    <div class="success-msg" id="successMsg">
-      <div class="check">✅</div>
-      <h3>Offer sent!</h3>
-      <p>I'll get back to you as soon as I can.</p>
+    <div class="success-msg" id="successMsg" style="display:none">
+      <div style="font-size:2.5rem">✅</div>
+      <h3 style="margin-top:8px">Offer sent!</h3>
+      <p style="font-size:0.85rem;color:var(--muted);margin-top:4px">I'll get back to you as soon as I can.</p>
     </div>
   </div>
 </div>
@@ -145,29 +138,37 @@
     { id: 24, emoji: "🧹", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-21-18-04-21 005 Small.jpeg"], title: "Dyson V6 Cordless Vacuum — with Wall Dock & Box", desc: "Dyson V6 cordless stick vacuum. Powerful digital motor, up to 20 minutes runtime. Converts to handheld. Includes wall-mount dock and original box.", retail: 300, price: 100, sold: false, available_from: null },
     { id: 5, emoji: "🖥️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-21-18-03-33 001 Small.jpeg"], title: "LG 29\" UltraWide Monitor — 29UB55, 2560x1080 IPS", desc: "29\" 21:9 UltraWide IPS panel, 2560x1080 resolution, height-adjustable stand, dual HDMI + DisplayPort + DVI-D.", retail: 283.99, price: 100, sold: false, available_from: null },
     { id: 48, emoji: "🧊", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-10-13-08.jpeg"], title: "RCA 3.2 Cu. Ft. Mini Refrigerator — Platinum Stainless", desc: "RCA compact mini fridge with small freezer compartment, adjustable thermostat, and reversible door. Great for dorm, office, or bedroom.", retail: 185, price: 40, sold: false, available_from: null },
-    { id: 49, emoji: "🖱️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-16-23-47 001.jpeg"], title: "Logitech MX Master 3 Wireless Mouse — Graphite", desc: "Premium wireless mouse with MagSpeed scroll wheel, multi-device connectivity (up to 3 devices), ergonomic design, USB-C charging.", retail: 99, price: 40, sold: false, available_from: null },
+    { id: 49, emoji: "🖱️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-16-23-47 001.jpeg"], title: "Logitech MX Master 3 Wireless Mouse — Graphite", desc: "Premium wireless mouse with MagSpeed scroll wheel, multi-device connectivity (up to 3 devices), USB-C charging.", retail: 99, price: 40, sold: false, available_from: null },
     { id: 50, emoji: "⌨️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-16-23-51 002.jpeg"], title: "Logitech MX Keys Mini Wireless Keyboard — Pale Gray", desc: "Compact wireless keyboard with backlit keys, multi-device connectivity, USB-C charging. Mac/Windows compatible.", retail: 99, price: 40, sold: false, available_from: null },
     { id: 51, emoji: "⌨️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-16-23-58 003.jpeg"], title: "Logitech MX Keys Wireless Keyboard (Full-size) — Space Gray", desc: "Full-size wireless keyboard with numpad, backlit keys, multi-device connectivity. Mac layout.", retail: 119, price: 45, sold: false, available_from: null },
     { id: 25, emoji: "🤖", category: "Electronics", photos: ["IMG_0307.jpeg"], title: "Roborock S5 Robot Vacuum", desc: "Roborock S5 with LiDAR laser navigation and automatic floor mapping. 2,000Pa suction, up to 150 minutes runtime. Charging dock included.", retail: 439.99, price: 50, sold: false, available_from: "2026-08-17" },
     { id: 30, emoji: "🖨️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-19-20-32-59 005 Small.jpeg"], title: "Brother DCP-L2540DW Wireless Laser Printer", desc: "Monochrome laser all-in-one with print, scan, and copy. Wireless + Ethernet, automatic duplex, 30 ppm, 250-sheet tray.", retail: 120, price: 35, sold: false, available_from: null },
+    { id: 52, emoji: "🔊", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-17-19-20-54.jpeg"], title: "Google Home Mini — Coral & Charcoal (Set of 2)", desc: "Google Home Mini smart speakers, set of 2. Voice control, music streaming, smart home control. Factory reset and ready to use.", retail: 98, price: 20, sold: false, available_from: null },
+    { id: 53, emoji: "💪", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-18-10-46-19 001.jpeg"], title: "Toloco Massage Gun — with Case & Attachments", desc: "Professional percussion massage gun with carrying case, multiple attachment heads. Adjustable speed settings for deep muscle relief.", retail: 49.99, price: 25, sold: false, available_from: null },
     { id: 47, emoji: "🎮", category: "Electronics", photos: ["KakaoTalk_Photo_2026-08-16-13-31-16 001.jpeg"], title: "Nintendo Switch Console — Neon Blue/Red with Dock", desc: "Nintendo Switch with Joy-Cons and dock. Good used condition.", retail: 299.99, price: 60, sold: true, available_from: null },
     { id: 4, emoji: "🖥️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-21-18-03-38 002 Small.jpeg"], title: "Dell 24\" Monitor — S2421H, Full HD IPS", desc: "23.8\" IPS panel, Full HD 1080p at 75Hz, AMD FreeSync. Like new condition.", retail: 134.99, price: 50, sold: true, available_from: null },
     { id: 6, emoji: "🖥️", category: "Electronics", photos: ["KakaoTalk_Photo_2026-07-19-20-33-36 009 Small.jpeg"], title: "ViewSonic 24\" Monitor — VX2450wm-LED, Full HD", desc: "23.6\" Full HD 1080p LED monitor. VGA + DVI inputs, built-in speakers.", retail: null, price: 20, sold: true, available_from: null },
 
     // ── 🍳 Kitchen ──
     { id: 15, emoji: "🍽️", category: "Kitchen", photos: ["IMG_0306.jpeg"], title: "Novete Portable Countertop Dishwasher — TDQR01", desc: "Compact countertop dishwasher with 5L built-in water tank. No installation needed. 5 wash programs, air-dry, 4 place settings.", retail: 279.99, price: 75, sold: false, available_from: "2026-08-17" },
-    { id: 11, emoji: "📡", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-07-19-20-33-25 008 Small.jpeg"], title: "Insignia 0.7 Cu. Ft. Compact Microwave — NS-MW07BK0", desc: "0.7 cu. ft. countertop microwave, 700W, 6 cooking programs, auto defrost, rotating turntable.", retail: 79.99, price: 20, sold: false, available_from: "2026-08-17" },
+    { id: 54, emoji: "☕", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-08-18-10-46-23 002.jpeg"], title: "Kaffe Electric Coffee Grinder — White", desc: "Compact electric blade coffee grinder. Quick and easy grinding for fresh coffee. Good used condition.", retail: 20, price: 10, sold: false, available_from: null },
     { id: 42, emoji: "☕", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-08-16-11-06-29 004.jpeg"], title: "Gooseneck Electric Pour-Over Kettle with Temperature Control", desc: "Stainless steel gooseneck electric kettle with temperature control base. Perfect for pour-over coffee or tea.", retail: 50, price: 10, sold: false, available_from: null },
+    { id: 57, emoji: "🫖", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-08-18-10-46-39 006.jpeg"], title: "Glass Tea Pot / Pitcher with Lid", desc: "Clear borosilicate glass teapot/pitcher with black lid and built-in strainer. Elegant minimalist design.", retail: 15, price: 8, sold: false, available_from: null },
+    { id: 58, emoji: "🔪", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-08-18-10-46-39 007.jpeg"], title: "Manual Food Chopper — Green/Clear", desc: "Pull-string manual food chopper with stainless steel blades. Great for garlic, onions, herbs. Easy to use and clean.", retail: 12, price: 5, sold: false, available_from: null },
+    { id: 56, emoji: "🧊", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-08-18-10-46-32 004.jpeg"], title: "Komax Biotank Ice Cube Tray with Lid", desc: "Korean Komax Biotank large ice cube tray with green snap-on lid. BPA-free. Good used condition.", retail: 12, price: 5, sold: false, available_from: null },
+    { id: 11, emoji: "📡", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-07-19-20-33-25 008 Small.jpeg"], title: "Insignia 0.7 Cu. Ft. Compact Microwave — NS-MW07BK0", desc: "0.7 cu. ft. countertop microwave, 700W, 6 cooking programs, auto defrost, rotating turntable.", retail: 79.99, price: 20, sold: false, available_from: "2026-08-17" },
     { id: 12, emoji: "🫖", category: "Kitchen", photos: ["KakaoTalk_Photo_2026-07-19-20-34-03 013 Small.jpeg"], title: "Hamilton Beach Electric Kettle", desc: "Stainless steel electric kettle. Fast boil, good capacity. Works perfectly.", retail: null, price: 5, sold: true, available_from: null },
 
     // ── 🏠 Home & Other ──
     { id: 21, emoji: "❄️", category: "Home & Other", photos: ["IMG_0308.jpeg"], title: "Haier Window AC — HWE12XCR-LD, 12,000 BTU", desc: "Haier 12,000 BTU window AC. Cools up to 550 sq ft. 3 speeds, Auto Cool, dehumidify, 24-hour timer, sleep mode, remote included.", retail: 319.99, price: 100, sold: false, available_from: "2026-08-17" },
     { id: 39, emoji: "☕", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-21-18-04-04 004 Small.jpeg"], title: "Nespresso VertuoPlus Coffee & Espresso Maker — Matte Black", desc: "Single-serve coffee maker with Centrifusion technology. Brews 4 cup sizes. 15-20 sec heat-up, auto-eject capsule, auto shutoff.", retail: 217.88, price: 50, sold: false, available_from: null },
-    { id: 52, emoji: "🔊", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-08-17-19-20-54.jpeg"], title: "Google Home Mini — Coral & Charcoal (Set of 2)", desc: "Google Home Mini smart speakers, set of 2 (coral and charcoal). Voice control, music streaming, smart home control. Factory reset and ready to use.", retail: 98, price: 20, sold: false, available_from: null },
+    { id: 55, emoji: "🥤", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-08-18-10-46-27 003.jpeg"], title: "Thermos Stainless Steel Flask — 25oz/750ml", desc: "Genuine Thermos brand stainless steel vacuum flask, 25oz/750ml. Keeps hot 24 hours, cold 24 hours.", retail: 25, price: 10, sold: false, available_from: null },
+    { id: 59, emoji: "💧", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-08-18-10-46-37 005.jpeg"], title: "Aqua Crest Brita Replacement Filter — 1 cartridge", desc: "Aqua Crest AQK-CF06A replacement filter for Brita pitchers, 1 cartridge remaining. NSF certified, BPA-free.", retail: 18, price: 3, sold: false, available_from: null },
+    { id: 60, emoji: "💧", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-08-18-10-46-42 008.jpeg"], title: "Brita Plus High-Density Replacement Filters — 6 cartridges", desc: "Brita Plus high-density filters, 6 cartridges (1.5 packs). Traps 2x contaminants, replaces every 2 months/40 gallons.", retail: 20, price: 10, sold: false, available_from: null },
     { id: 20, emoji: "🦷", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-32-21 001.jpeg"], title: "Waterpik Aquarius Water Flosser — WP-660C", desc: "ADA-accepted with 10 pressure settings, Floss and Massage modes, 7 color-coded tips, 22oz reservoir.", retail: 79.99, price: 20, sold: false, available_from: null },
     { id: 43, emoji: "💧", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-08-16-11-06-48 005.jpeg"], title: "Vicks Warm Mist Humidifier", desc: "Vicks warm mist humidifier. Soothing steam for congestion and dry air relief.", retail: 49, price: 10, sold: false, available_from: null },
     { id: 27, emoji: "💡", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-33-51 011 Small.jpeg"], title: "IKEA FILLSTA Table Lamp — White (Discontinued)", desc: "Discontinued IKEA FILLSTA table lamp with iconic white petal-shaped shade and three slender metal legs.", retail: 35, price: 10, sold: false, available_from: null },
-    { id: 19, emoji: "💇", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"], title: "Conair 1875W Hair Dryer — White", desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring for easy storage.", retail: 25, price: 8, sold: false, available_from: null },
+    { id: 19, emoji: "💇", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-34-01 012 Small.jpeg"], title: "Conair 1875W Hair Dryer — White", desc: "Lightweight 1875-watt hair dryer with 2 heat and 2 speed settings. Compact design with hang ring.", retail: 25, price: 8, sold: false, available_from: null },
     { id: 26, emoji: "🪑", category: "Home & Other", photos: ["KakaoTalk_Photo_2026-07-19-20-34-12 014 Small.jpeg"], title: "IKEA LACK Side Table — Red (Discontinued)", desc: "Classic IKEA LACK side table in discontinued red finish. Red colorway no longer available in stores.", retail: 9.99, price: 5, sold: true, available_from: null },
   ];
 
